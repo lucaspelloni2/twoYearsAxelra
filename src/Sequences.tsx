@@ -2,6 +2,7 @@ import React from 'react';
 import {Sequence} from 'remotion';
 import {AxelraLogo} from './AxelraLogo';
 import {ColorTransition} from './ColorTransition';
+import {EmployeeGrowth} from './EmployeeGrowth';
 import {FoundingTeam} from './FoundingTeam';
 import {IncorporationImages} from './IncorporationImages';
 import {Logos} from './Logos';
@@ -91,7 +92,7 @@ export const Sequences = () => {
 					titleSubText="First Office"
 				/>
 			</Sequence>
-			<Sequence from={970} durationInFrames={430} layout="none">
+			<Sequence from={970} durationInFrames={390} layout="none">
 				<AxelraSlideWithHeader
 					title="How it started"
 					subtitle="First office."
@@ -100,6 +101,13 @@ export const Sequences = () => {
 				>
 					<VideoFirstOffice />
 				</AxelraSlideWithHeader>
+			</Sequence>
+			<Sequence from={1360} durationInFrames={300}>
+				<EmployeeGrowth
+					step={1}
+					title="4 + 1 Axelrators"
+					subtitle="We started growing quickly."
+				/>
 			</Sequence>
 		</Scaler>
 	);

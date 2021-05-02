@@ -14,7 +14,7 @@ const Container = styled(Flex)`
 	height: 100%;
 `;
 
-const founders: TeamMemberType[] = [
+export const founders: TeamMemberType[] = [
 	{id: 'peach', src: Peach, name: 'Peach Zwyssig'},
 	{id: 'tom', src: Tom, name: 'Thomas Bocek'},
 	{id: 'lucas', src: Lucas, name: 'Lucas Pelloni'},

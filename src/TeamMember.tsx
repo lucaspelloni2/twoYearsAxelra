@@ -5,14 +5,14 @@ import styled from 'styled-components';
 import {__COLORS} from './theme';
 import {BlackSubTitle} from './UI';
 
-const Container = styled.div`
-	width: 400px;
-	height: 400px;
+const Container = styled.div<{size?: number}>`
+	width: ${(props) => props.size ?? 400}px;
+	height: ${(props) => props.size ?? 400}px;
 	border-radius: 50%;
-	background: red;
 	border: 5px solid ${__COLORS.AXELRA_LIGHT_BLUE};
 	overflow: hidden;
 	margin: 0 ${SPACING * 2}px;
+
 `;
 
 const Image = styled(Img)`
@@ -27,21 +27,25 @@ const Subtitle = styled(BlackSubTitle)`
 export type TeamMemberType = {
 	src: any;
 	id: string;
+	isNew?: boolean;
+	role?: string;
 	name?: string;
 };
 
 type Props = {
 	member: TeamMemberType;
+	size?: number;
+	hasNoName?: boolean;
 };
-export const TeamMember = ({member}: Props) => {
+export const TeamMember = ({member, size, hasNoName}: Props) => {
 	const {id, src, name} = member;
 	return (
 		<Flex column justify="center" align="center">
-			<Container key={id}>
+			<Container key={id} size={size}>
 				<Image src={src} />
 			</Container>
 			<Spacer x8 />
-			{name && <Subtitle>{name}</Subtitle>}
+			{name && !hasNoName && <Subtitle>{name}</Subtitle>}
 		</Flex>
 	);
 };
