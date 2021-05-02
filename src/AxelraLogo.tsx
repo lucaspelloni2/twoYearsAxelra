@@ -3,10 +3,16 @@ import {__COLORS} from './theme';
 
 type Props = {
 	color?: string;
-};
-export const AxelraLogo = ({color}: Props) => {
+} & React.SVGProps<SVGSVGElement>;
+export const AxelraLogo = ({color, ...other}: Props) => {
 	return (
-		<svg width="280px" height="146px" viewBox="0 0 280 146" version="1.1">
+		<svg
+			width="280px"
+			height="146px"
+			viewBox="0 0 280 146"
+			version="1.1"
+			{...other}
+		>
 			<title>axelra</title>
 			<defs>
 				<linearGradient x1="0%" y1="100%" x2="0%" y2="0%" id="linearGradient-1">

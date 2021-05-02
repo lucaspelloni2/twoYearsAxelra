@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+import {SPACING} from 'axelra-styled-bootstrap-grid';
+import styled, {css} from 'styled-components';
 
 export const BlackTitle = styled.h1`
 	color: black;
@@ -14,4 +15,8 @@ export const BlackSubTitle = styled.h1`
 	font-weight: 100;
 	margin: 0;
 	font-family: 'Avenir Regular';
+`;
+
+export const DEFAULT_PADDING = css`
+	padding: ${SPACING * 6}px;
 `;
