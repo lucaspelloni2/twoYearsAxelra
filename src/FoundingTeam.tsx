@@ -6,18 +6,19 @@ import Lucas from './assets/team/lucas_guetzli.jpg';
 import Peach from './assets/team/peach_guetzli.jpg';
 import Sevi from './assets/team/sevi_guetzli.jpg';
 import Tom from './assets/team/tom_guetzli.jpg';
-import {TeamMember} from './TeamMember';
+import {TeamMember, TeamMemberType} from './TeamMember';
 
 const Container = styled(Flex)`
 	width: 100%;
+	color: white;
 	height: 100%;
 `;
 
-const founders = [
-	{id: 'peach', src: Peach},
-	{id: 'tom', src: Tom},
-	{id: 'lucas', src: Lucas},
-	{id: 'sevi', src: Sevi},
+const founders: TeamMemberType[] = [
+	{id: 'peach', src: Peach, name: 'Peach Zwyssig'},
+	{id: 'tom', src: Tom, name: 'Thomas Bocek'},
+	{id: 'lucas', src: Lucas, name: 'Lucas Pelloni'},
+	{id: 'sevi', src: Sevi, name: 'Severin Wullschleger'},
 ];
 export const FoundingTeam = () => {
 	const frame = useCurrentFrame();
@@ -37,7 +38,7 @@ export const FoundingTeam = () => {
 					});
 					const spOut = spring({
 						fps,
-						frame: frame - durationInFrames + durationInFrames / 2,
+						frame: frame - durationInFrames + 30,
 						config: {
 							damping: 500,
 							stiffness: 150,
@@ -47,7 +48,7 @@ export const FoundingTeam = () => {
 					const scale = spIn * (1 - spOut);
 					return (
 						<div style={{transform: `scale(${scale})`}}>
-							<TeamMember key={founder.id} src={founder.src} />
+							<TeamMember key={founder.id} member={founder} />
 						</div>
 					);
 				})}

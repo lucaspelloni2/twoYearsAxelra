@@ -5,12 +5,12 @@ import {ColorTransition} from './ColorTransition';
 import {FoundingTeam} from './FoundingTeam';
 import {IncorporationImages} from './IncorporationImages';
 import {Logos} from './Logos';
+import {Scaler} from './Scaler';
 import {seconds} from './seconds';
 import {AxelraSlideWithHeader} from './slides/AxelraSlideWithHeader';
 import {DefaultAxelraSlide} from './slides/DefaultAxelraSlide';
 import {ImagesWithCenteredLogo} from './slides/ImagesWithCenteredLogo';
 import {__COLORS} from './theme';
-import {Scaler} from './Scaler';
 
 const AXELRA_SLIDE_DURATION_IN_FRAMES = seconds(3);
 
@@ -76,6 +76,19 @@ export const Sequences = () => {
 				>
 					<FoundingTeam />
 				</AxelraSlideWithHeader>
+			</Sequence>
+			<Sequence from={875} durationInFrames={5}>
+				<ColorTransition from={__COLORS.AXELRA_DARK_BLUE} to={__COLORS.WHITE} />
+			</Sequence>
+			<Sequence
+				from={880}
+				durationInFrames={AXELRA_SLIDE_DURATION_IN_FRAMES}
+				layout="none"
+			>
+				<DefaultAxelraSlide
+					titleText="How it started"
+					titleSubText="First Office"
+				/>
 			</Sequence>
 		</Scaler>
 	);

@@ -48,7 +48,7 @@ export const Logos = () => {
 
 	const scaleLogo = spring({fps, frame: frame - durationInFrames / 2 - 10});
 
-	const shadow = interpolate(frame, [140, 155], [0.03, 0.1], {
+	const shadow = interpolate(frame, [140, 155], [0.06, 0.13], {
 		extrapolateLeft: 'clamp',
 		extrapolateRight: 'clamp',
 	});
