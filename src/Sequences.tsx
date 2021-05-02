@@ -1,6 +1,8 @@
 import React from 'react';
 import {Sequence} from 'remotion';
 import {AxelraLogo} from './AxelraLogo';
+import {ColorTransition} from './ColorTransition';
+import {FoundingTeam} from './FoundingTeam';
 import {IncorporationImages} from './IncorporationImages';
 import {Logos} from './Logos';
 import {seconds} from './seconds';
@@ -59,6 +61,20 @@ export const Sequences = () => {
 				>
 					<IncorporationImages />
 				</ImagesWithCenteredLogo>
+			</Sequence>
+			<Sequence from={670} durationInFrames={5}>
+				<ColorTransition from={__COLORS.WHITE} to={__COLORS.AXELRA_DARK_BLUE} />
+			</Sequence>
+			<Sequence from={675} durationInFrames={200} layout="none">
+				<AxelraSlideWithHeader
+					title="How it started"
+					subtitle="Founding Team & first four Axelrators."
+					backgroundColor={__COLORS.AXELRA_DARK_BLUE}
+					titleColor={__COLORS.WHITE}
+					logoColor={__COLORS.WHITE}
+				>
+					<FoundingTeam />
+				</AxelraSlideWithHeader>
 			</Sequence>
 		</>
 	);

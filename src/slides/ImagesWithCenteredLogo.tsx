@@ -33,8 +33,8 @@ export const ImagesWithCenteredLogo = ({
 	const frame = useCurrentFrame();
 	const {fps, durationInFrames} = useVideoConfig();
 	const scaleLogoIn = spring({fps, frame});
-	const scaleLogoOut = spring({fps, frame: frame - durationInFrames + 50});
-	const scale = scaleLogoIn * (1 - scaleLogoOut);
+	const scaleLogoOut = spring({fps, frame: frame - durationInFrames + 20});
+	const scale = Math.max(scaleLogoIn * (1 - scaleLogoOut), 0);
 	return (
 		<Container>
 			<LogoContainer

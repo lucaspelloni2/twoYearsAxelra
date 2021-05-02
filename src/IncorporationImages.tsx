@@ -34,7 +34,7 @@ const images: ImageType[] = [
 	createImage({
 		left: -10,
 		zIndex: 6,
-		bottom: -120,
+		bottom: -48,
 		width: 890,
 		height: 'auto',
 		src: Inc5,
@@ -74,7 +74,7 @@ export const IncorporationImages = () => {
 				});
 				const spOut = spring({
 					fps,
-					frame: frame - durationInFrames + 50,
+					frame: frame - durationInFrames + 20,
 					config: {
 						damping: 100,
 						stiffness: 150,
