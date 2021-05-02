@@ -30,13 +30,23 @@ export const Sequences = () => {
 					titleSubText="Our Journey from 05.2019 - 05.2021"
 				/>
 			</Sequence>
-			<Sequence from={180} durationInFrames={300} layout="none">
+			<Sequence from={180} durationInFrames={250} layout="none">
 				<AxelraSlideWithHeader
 					title="How it started"
 					subtitle="Logo Selection."
 				>
 					<Logos />
 				</AxelraSlideWithHeader>
+			</Sequence>
+			<Sequence
+				from={480}
+				durationInFrames={AXELRA_SLIDE_DURATION_IN_FRAMES}
+				layout="none"
+			>
+				<DefaultAxelraSlide
+					titleText="How it started"
+					titleSubText="Founding Team & Incorporation"
+				/>
 			</Sequence>
 		</>
 	);

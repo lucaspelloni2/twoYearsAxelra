@@ -39,17 +39,14 @@ const logos = [
 
 export const Logos = () => {
 	const frame = useCurrentFrame();
-	const {fps} = useVideoConfig();
+	const {fps, durationInFrames} = useVideoConfig();
 
-	const scale = interpolate(frame, [130, 140], [1, 0], {
+	/*	const scale = interpolate(frame, [130, 140], [1, 0], {
 		extrapolateLeft: 'clamp',
 		extrapolateRight: 'clamp',
-	});
+	});*/
 
-	const scaleLogo = interpolate(frame, [135, 145], [0, 1], {
-		extrapolateLeft: 'clamp',
-		extrapolateRight: 'clamp',
-	});
+	const scaleLogo = spring({fps, frame: frame - durationInFrames / 2 - 10});
 
 	const shadow = interpolate(frame, [140, 155], [0.03, 0.1], {
 		extrapolateLeft: 'clamp',
@@ -58,30 +55,44 @@ export const Logos = () => {
 
 	return (
 		<Container column justify="center">
-			<Flex row justify="space-between" style={{transform: `scale(${scale})`}}>
-				{logos.map((logo, i) => (
-					<Img
-						src={logo.src}
-						style={{
-							transform: `scale(${spring({
-								fps,
-								frame: frame - i * 8,
-								config: {
-									damping: 100,
-									stiffness: 150,
-									mass: 0.3,
-								},
-							})})`,
-						}}
-					/>
-				))}
+			<Flex row justify="space-between">
+				{logos.map((logo, i) => {
+					const spIn = spring({
+						fps,
+						frame: frame - i * 8 - 20,
+						config: {
+							damping: 100,
+							stiffness: 150,
+							mass: 0.3,
+						},
+					});
+					const spOut = spring({
+						fps,
+						frame: frame - durationInFrames + durationInFrames / 2,
+						config: {
+							damping: 100,
+							stiffness: 150,
+							mass: 0.3,
+						},
+					});
+					const scale = spIn * (1 - spOut);
+					return (
+						<Img
+							key={logo.id}
+							src={logo.src}
+							style={{
+								transform: `scale(${scale})`,
+							}}
+						/>
+					);
+				})}
 			</Flex>
 			<LogoContainer
 				column
 				justify="center"
 				align="center"
 				style={{
-					transform: `scale(${scaleLogo}) translate(-50%, -50%)`,
+					transform: `translate(-50%, -50%) scale(${scaleLogo}) `,
 					boxShadow: `2px 30px 70px rgba(0, 0, 0, ${shadow})`,
 				}}
 			>
