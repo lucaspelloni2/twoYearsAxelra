@@ -1,6 +1,6 @@
 import {Flex, Spacer} from 'axelra-styled-bootstrap-grid';
 import React from 'react';
-import {interpolate, Sequence, useCurrentFrame, useVideoConfig} from 'remotion';
+import {interpolate, spring, useCurrentFrame, useVideoConfig} from 'remotion';
 import styled from 'styled-components';
 import {AxelraLogo} from '../AxelraLogo';
 import {__COLORS} from '../theme';
@@ -21,43 +21,43 @@ export const DefaultAxelraSlide = ({titleSubText, titleText}: Props) => {
 	const videoConfig = useVideoConfig();
 
 	const transitionStart = 10;
-	const input = [transitionStart, videoConfig.durationInFrames / 3];
-	const opacity = interpolate(frame, input, [0, 1], {
+	const input = [
+		transitionStart,
+		videoConfig.durationInFrames / 4,
+		videoConfig.durationInFrames - 10,
+		videoConfig.durationInFrames,
+	];
+	const opacity = interpolate(frame, input, [0, 1, 1, 0], {
 		extrapolateLeft: 'clamp',
 		extrapolateRight: 'clamp',
 	});
 
-	const translateY = interpolate(frame, input, [-30, 0], {
-		extrapolateLeft: 'clamp',
-		extrapolateRight: 'clamp',
-	});
-
-	const translateYTitle = interpolate(frame, input, [30, 0], {
-		extrapolateLeft: 'clamp',
-		extrapolateRight: 'clamp',
+	const translateYTitle = spring({
+		fps: videoConfig.fps,
+		frame: frame - 2,
+		config: {
+			damping: 100,
+			stiffness: 200,
+			mass: 0.5,
+		},
 	});
 
 	return (
 		<Container column justify="center" align="center">
-			<Sequence
-				from={0}
-				durationInFrames={videoConfig.durationInFrames}
-				layout="none"
+			<div style={{opacity, transform: `scale(${translateYTitle})`}}>
+				<AxelraLogo color={__COLORS.AXELRA_DARK_BLUE} />
+			</div>
+			<Spacer x8 />
+			<Flex
+				column
+				align="center"
+				justify="center"
+				style={{opacity, transform: `scale(${translateYTitle})`}}
 			>
-				<div style={{opacity, transform: `translateY(${translateY}px)`}}>
-					<AxelraLogo color={__COLORS.AXELRA_DARK_BLUE} />
-				</div>
-				<Spacer x8 />
-				<Flex
-					column
-					align="center"
-					justify="center"
-					style={{opacity, transform: `translateY(${translateYTitle}px`}}
-				>
-					<BlackTitle>{titleText}</BlackTitle>
-					<BlackSubTitle>{titleSubText}</BlackSubTitle>
-				</Flex>
-			</Sequence>
+				<BlackTitle>{titleText}</BlackTitle>
+				<BlackSubTitle>{titleSubText}</BlackSubTitle>
+			</Flex>
+			<Spacer x8 />
 		</Container>
 	);
 };

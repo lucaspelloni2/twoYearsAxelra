@@ -7,6 +7,14 @@ type Props = {
 export const AxelraLogo = ({color}: Props) => {
 	return (
 		<svg width="280px" height="146px" viewBox="0 0 280 146" version="1.1">
+			<title>axelra</title>
+			<defs>
+				<linearGradient x1="0%" y1="100%" x2="0%" y2="0%" id="linearGradient-1">
+					<stop stopColor="#009BFA" offset="0%" />
+					<stop stopColor="#00B4DD" offset="50%" />
+					<stop stopColor="#00D3BC" offset="100%" />
+				</linearGradient>
+			</defs>
 			<g
 				id="Page-1"
 				stroke="none"
@@ -28,7 +36,7 @@ export const AxelraLogo = ({color}: Props) => {
 						<path
 							d="M177.845807,59.7651515 L166.524295,77.5214646 L189.602763,77.5214646 L177.845807,59.7651515 Z M160.863538,26.8510101 L144.752155,51.969697 L160.428096,74.0568182 L190.909091,26.4179293 L160.863538,26.8510101 Z M139.526842,0 L89.8863636,77.9545455 L119.061031,77.9545455 L154.331897,22.520202 L139.526842,0 Z"
 							id="Shape"
-							fill={color ?? __COLORS.AXELRA_DARK_BLUE}
+							fill="url(#linearGradient-1)"
 						/>
 					</g>
 				</g>
