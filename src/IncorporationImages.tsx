@@ -2,9 +2,8 @@ import React from 'react';
 import {Img, spring, useCurrentFrame, useVideoConfig} from 'remotion';
 import styled from 'styled-components';
 import Inc1 from './assets/inc1.jpeg';
-import Inc2 from './assets/inc2.jpeg';
 import Inc3 from './assets/inc3.jpeg';
-import Inc4 from './assets/inc4.png';
+import Inc4 from './assets/inc4.jpeg';
 import Inc5 from './assets/inc5.jpeg';
 import {createImage, ImageType} from './ImageType';
 
@@ -40,20 +39,20 @@ const images: ImageType[] = [
 		src: Inc5,
 	}),
 	createImage({
-		right: 600,
+		right: 500,
 		zIndex: 2,
-		bottom: 0,
-		width: 650,
+		bottom: -178,
+		width: 740,
 		height: 'auto',
 		src: Inc4,
 	}),
-	createImage({
+	/*	createImage({
 		right: 620,
 		top: -130,
 		width: 500,
 		height: 'auto',
 		src: Inc2,
-	}),
+	}),*/
 ];
 
 export const IncorporationImages = () => {

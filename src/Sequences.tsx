@@ -11,6 +11,7 @@ import {AxelraSlideWithHeader} from './slides/AxelraSlideWithHeader';
 import {DefaultAxelraSlide} from './slides/DefaultAxelraSlide';
 import {ImagesWithCenteredLogo} from './slides/ImagesWithCenteredLogo';
 import {__COLORS} from './theme';
+import {VideoFirstOffice} from './VideoFirstOffice';
 
 const AXELRA_SLIDE_DURATION_IN_FRAMES = seconds(3);
 
@@ -89,6 +90,16 @@ export const Sequences = () => {
 					titleText="How it started"
 					titleSubText="First Office"
 				/>
+			</Sequence>
+			<Sequence from={970} durationInFrames={430} layout="none">
+				<AxelraSlideWithHeader
+					title="How it started"
+					subtitle="First office."
+					titleColor={__COLORS.WHITE}
+					logoColor={__COLORS.WHITE}
+				>
+					<VideoFirstOffice />
+				</AxelraSlideWithHeader>
 			</Sequence>
 		</Scaler>
 	);
