@@ -3,7 +3,6 @@ import React from 'react';
 import {interpolate, spring, useCurrentFrame, useVideoConfig} from 'remotion';
 import styled from 'styled-components';
 import {AxelraLogo} from '../AxelraLogo';
-import {__COLORS} from '../theme';
 import {BlackSubTitle, BlackTitle} from '../UI';
 
 const Container = styled(Flex)`
@@ -45,7 +44,7 @@ export const DefaultAxelraSlide = ({titleSubText, titleText}: Props) => {
 	return (
 		<Container column justify="center" align="center">
 			<div style={{opacity, transform: `scale(${translateYTitle})`}}>
-				<AxelraLogo color={__COLORS.AXELRA_DARK_BLUE} />
+				<AxelraLogo />
 			</div>
 			<Spacer x8 />
 			<Flex

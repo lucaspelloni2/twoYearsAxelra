@@ -10,12 +10,13 @@ import {AxelraSlideWithHeader} from './slides/AxelraSlideWithHeader';
 import {DefaultAxelraSlide} from './slides/DefaultAxelraSlide';
 import {ImagesWithCenteredLogo} from './slides/ImagesWithCenteredLogo';
 import {__COLORS} from './theme';
+import {Scaler} from './Scaler';
 
 const AXELRA_SLIDE_DURATION_IN_FRAMES = seconds(3);
 
 export const Sequences = () => {
 	return (
-		<>
+		<Scaler scale={2}>
 			<Sequence
 				from={0}
 				durationInFrames={AXELRA_SLIDE_DURATION_IN_FRAMES}
@@ -76,6 +77,6 @@ export const Sequences = () => {
 					<FoundingTeam />
 				</AxelraSlideWithHeader>
 			</Sequence>
-		</>
+		</Scaler>
 	);
 };
