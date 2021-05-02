@@ -1,0 +1,9 @@
+@font-face {
+	font-family: 'Avenir Bold';
+	src: url('./assets/AvenirNextLTPro-Bold.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'Avenir Regular';
+	src: url('./assets/AvenirNextLTPro-Regular.woff') format('woff');
+}

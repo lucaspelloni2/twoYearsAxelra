@@ -1,4 +1,4 @@
-import {spring, useCurrentFrame, useVideoConfig} from 'remotion';
+import {useCurrentFrame, useVideoConfig} from 'remotion';
 
 export const Title: React.FC<{
 	titleText: string;
@@ -7,8 +7,11 @@ export const Title: React.FC<{
 	const videoConfig = useVideoConfig();
 	const frame = useCurrentFrame();
 	const text = titleText.split(' ').map((t) => ` ${t} `);
-	return (
-		<h1
+	return <h1 style={{fontFamily: 'Avenir Regular'}}>ajosfjoasfjo</h1>;
+};
+
+/**
+ * 		<h1
 			style={{
 				fontFamily: 'SF Pro Text, Helvetica, Arial',
 				fontWeight: 'bold',
@@ -39,10 +42,9 @@ export const Title: React.FC<{
 							display: 'inline-block',
 						}}
 					>
-						{t}
+						{t.toUpperCase()}
 					</span>
 				);
 			})}
 		</h1>
-	);
-};
+ */
