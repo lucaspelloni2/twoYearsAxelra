@@ -48,7 +48,7 @@ export const AxelraSlideWithHeader = ({
 	const transitionStart = 10;
 	const input = [
 		transitionStart,
-		videoConfig.durationInFrames / 4,
+		30,
 		videoConfig.durationInFrames - 10,
 		videoConfig.durationInFrames,
 	];

@@ -1,6 +1,6 @@
 import {Flex, Spacer} from 'axelra-styled-bootstrap-grid';
 import React from 'react';
-import {spring, useCurrentFrame, useVideoConfig} from 'remotion';
+import {interpolate, spring, useCurrentFrame, useVideoConfig} from 'remotion';
 import styled from 'styled-components';
 import Calvin from './assets/team/calvin_guetzli.jpg';
 import Jonas from './assets/team/jonas_guetzli.jpg';
@@ -13,7 +13,6 @@ import {__COLORS} from './theme';
 const Divider = styled.div`
 	background: linear-gradient(to bottom, white, rgba(255, 255, 255, 0.1));
 	width: 7px;
-	height: 100%;
 	border-radius: 10px;
 `;
 
@@ -63,6 +62,12 @@ export const EmployeeGrowth = ({step, title, subtitle}: Props) => {
 	const team = getTeam(step);
 	const frame = useCurrentFrame();
 	const {fps, durationInFrames} = useVideoConfig();
+
+	const height = interpolate(frame, [30, 46], [0, 100], {
+		extrapolateLeft: 'clamp',
+		extrapolateRight: 'clamp',
+	});
+
 	return (
 		<AxelraSlideWithHeader
 			title={title}
@@ -82,7 +87,7 @@ export const EmployeeGrowth = ({step, title, subtitle}: Props) => {
 								.map((m, i) => {
 									const spIn = spring({
 										fps,
-										frame: frame - i * 3 - 20,
+										frame: frame - i * 3 - 30,
 										config: {
 											damping: 10,
 											stiffness: 150,
@@ -109,14 +114,14 @@ export const EmployeeGrowth = ({step, title, subtitle}: Props) => {
 					</Flex>
 					<Flex flex={1} />
 				</Flex>
-				<Divider />
+				<Divider style={{height: `${height}%`}} />
 				<Flex column flex={1} justify="center" align="center">
 					{team
 						.filter((m) => m.isNew)
 						.map((m, i) => {
 							const spIn = spring({
 								fps,
-								frame: frame - i * 3 - 50,
+								frame: frame - i * 3 - 55,
 								config: {
 									damping: 10,
 									stiffness: 150,
