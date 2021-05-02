@@ -1,6 +1,7 @@
 import {Composition} from 'remotion';
 import './fonts.css';
 import {DefaultAxelraSlide} from './slides/DefaultAxelraSlide';
+
 export const RemotionVideo: React.FC = () => {
 	return (
 		<>

@@ -1,9 +1,10 @@
-import {Flex} from 'axelra-styled-bootstrap-grid';
+import {Flex, Spacer} from 'axelra-styled-bootstrap-grid';
 import React from 'react';
 import {interpolate, Sequence, useCurrentFrame, useVideoConfig} from 'remotion';
 import styled from 'styled-components';
 import {AxelraLogo} from '../AxelraLogo';
-import {Title} from '../HelloWorld/Title';
+import {__COLORS} from '../theme';
+import {BlackSubTitle, BlackTitle} from '../UI';
 
 const Container = styled(Flex)`
 	background-color: white;
@@ -31,6 +32,11 @@ export const DefaultAxelraSlide = ({titleSubText, titleText}: Props) => {
 		extrapolateRight: 'clamp',
 	});
 
+	const translateYTitle = interpolate(frame, input, [30, 0], {
+		extrapolateLeft: 'clamp',
+		extrapolateRight: 'clamp',
+	});
+
 	return (
 		<Container column justify="center" align="center">
 			<Sequence
@@ -39,9 +45,18 @@ export const DefaultAxelraSlide = ({titleSubText, titleText}: Props) => {
 				layout="none"
 			>
 				<div style={{opacity, transform: `translateY(${translateY}px)`}}>
-					<AxelraLogo />
+					<AxelraLogo color={__COLORS.AXELRA_DARK_BLUE} />
 				</div>
-				<Title titleText={titleText} titleColor={'blue'} />
+				<Spacer x8 />
+				<Flex
+					column
+					align="center"
+					justify="center"
+					style={{opacity, transform: `translateY(${translateYTitle}px`}}
+				>
+					<BlackTitle>{titleText}</BlackTitle>
+					<BlackSubTitle>{titleSubText}</BlackSubTitle>
+				</Flex>
 			</Sequence>
 		</Container>
 	);
