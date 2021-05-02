@@ -13,6 +13,8 @@ const Container = styled(Flex)`
 
 const Header = styled(Flex)`
 	${DEFAULT_PADDING};
+	position: fixed;
+	width: 100%;
 `;
 
 const Title = styled(BlackTitle)`

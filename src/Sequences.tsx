@@ -1,5 +1,6 @@
 import React from 'react';
 import {Sequence} from 'remotion';
+import {Logos} from './Logos';
 import {seconds} from './seconds';
 import {AxelraSlideWithHeader} from './slides/AxelraSlideWithHeader';
 import {DefaultAxelraSlide} from './slides/DefaultAxelraSlide';
@@ -29,16 +30,12 @@ export const Sequences = () => {
 					titleSubText="Our Journey from 05.2019 - 05.2021"
 				/>
 			</Sequence>
-			<Sequence
-				from={180}
-				durationInFrames={AXELRA_SLIDE_DURATION_IN_FRAMES}
-				layout="none"
-			>
+			<Sequence from={180} durationInFrames={300} layout="none">
 				<AxelraSlideWithHeader
 					title="How it started"
 					subtitle="Logo Selection."
 				>
-					asjofjoasfjoafs
+					<Logos />
 				</AxelraSlideWithHeader>
 			</Sequence>
 		</>
