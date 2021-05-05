@@ -11,6 +11,7 @@ import {seconds} from './seconds';
 import {AxelraSlideWithHeader} from './slides/AxelraSlideWithHeader';
 import {DefaultAxelraSlide} from './slides/DefaultAxelraSlide';
 import {ImagesWithCenteredLogo} from './slides/ImagesWithCenteredLogo';
+import {VentureHeroSlide} from './slides/VentureHeroSlide';
 import {__COLORS} from './theme';
 import {VideoFirstOffice} from './VideoFirstOffice';
 
@@ -107,6 +108,16 @@ export const Sequences = () => {
 					step={1}
 					title="4 + 1 Axelrators"
 					subtitle="We started growing quickly."
+				/>
+			</Sequence>
+			<Sequence from={1660} durationInFrames={10}>
+				<ColorTransition from={__COLORS.AXELRA_DARK_BLUE} to="#FF0070" />
+			</Sequence>
+			<Sequence from={1670} durationInFrames={200}>
+				<VentureHeroSlide
+					title="Moflix"
+					subtitle="Platform and app to radically simplify digital telecommunication services with a focus on onboarding."
+					background="linear-gradient(46deg, #FF0070 0%, #FF0042 100%)"
 				/>
 			</Sequence>
 		</Scaler>
