@@ -12,12 +12,12 @@
 	"repository": {},
 	"license": "UNLICENSED",
 	"dependencies": {
-		"@remotion/bundler": "^2.0.0",
-		"@remotion/cli": "^2.0.0",
+		"@remotion/bundler": "^2.0.8",
+		"@remotion/cli": "^2.0.8",
 		"@remotion/eslint-config": "^2.0.0",
-		"@remotion/renderer": "^2.0.0",
+		"@remotion/renderer": "^2.0.8",
 		"@types/express": "^4.17.9",
-		"@types/react": "^17.0.0",
+		"@types/react": "^17.0.5",
 		"@types/styled-components": "^5.1.9",
 		"axelra-styled-bootstrap-grid": "^0.7.0",
 		"eslint": "^7.15.0",
@@ -26,8 +26,8 @@
 		"prettier-plugin-organize-imports": "^1.1.1",
 		"react": "^17.0.2",
 		"react-dom": "^17.0.2",
-		"remotion": "^2.0.0",
-		"styled-components": "^5.2.3",
+		"remotion": "^2.0.8",
+		"styled-components": "^5.3.0",
 		"ts-node": "^9.1.1",
 		"typescript": "^4.2.3"
 	}
