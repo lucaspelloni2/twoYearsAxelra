@@ -1,9 +1,7 @@
+import {Col, Container, Flex, Row} from 'axelra-styled-bootstrap-grid';
 import React from 'react';
-import styled from 'styled-components';
-import {AxelraSlideWithHeader} from './AxelraSlideWithHeader';
 import {__COLORS} from '../theme';
-
-const Container = styled.div``;
+import {AxelraSlideWithHeader} from './AxelraSlideWithHeader';
 
 type Props = {
 	id: 'moflix' | 'sibex' | 'livealytics' | 'fqx' | 'gioia' | 'freya';
@@ -22,7 +20,15 @@ export const VentureProductSlide = () => {
 			backgroundColor="linear-gradient(180deg, #464D5B 0%, #2A2F3B 100%)"
 			logoColor={__COLORS.WHITE}
 		>
-			VentureProductSlide
+			<Container fluid style={{height: '100%'}}>
+				<Row flex={1} style={{height: '100%'}}>
+					<Col xs={0.5}>ajosfjosaf</Col>
+					<Col style={{background: 'red'}}>
+						<Flex>ajosfjoa</Flex>
+					</Col>
+					<Col xs={0.5}>ajosfjosaf</Col>
+				</Row>
+			</Container>
 		</AxelraSlideWithHeader>
 	);
 };
