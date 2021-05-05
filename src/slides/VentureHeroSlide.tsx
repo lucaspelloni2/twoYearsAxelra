@@ -1,6 +1,6 @@
 import {Flex, Spacer} from 'axelra-styled-bootstrap-grid';
 import React from 'react';
-import {interpolate, useCurrentFrame} from 'remotion';
+import {interpolate, useCurrentFrame, useVideoConfig} from 'remotion';
 import styled from 'styled-components';
 import {BlackSubTitle, BlackTitle} from '../UI';
 
@@ -31,14 +31,16 @@ type Props = {
 };
 export const VentureHeroSlide = ({title, subtitle, background}: Props) => {
 	const frame = useCurrentFrame();
-	const opacity = interpolate(frame, [0, 20], [1, 1], {
-		extrapolateLeft: 'clamp',
-		extrapolateRight: 'clamp',
-	});
-	const blur = interpolate(frame, [10, 20], [40, 0], {
-		extrapolateLeft: 'clamp',
-		extrapolateRight: 'clamp',
-	});
+	const {durationInFrames} = useVideoConfig();
+	const blur = interpolate(
+		frame,
+		[0, 8, durationInFrames - 5, durationInFrames],
+		[15, 0, 0, 15],
+		{
+			extrapolateLeft: 'clamp',
+			extrapolateRight: 'clamp',
+		}
+	);
 
 	return (
 		<Container
@@ -47,7 +49,6 @@ export const VentureHeroSlide = ({title, subtitle, background}: Props) => {
 			align="center"
 			justify="center"
 			background={background}
-			style={{opacity}}
 		>
 			<TextWrapper column justify="center" align="center">
 				<Title style={{filter: `blur(${blur}px)`}}>{title}</Title>

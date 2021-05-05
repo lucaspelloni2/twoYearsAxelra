@@ -12,6 +12,7 @@ import {AxelraSlideWithHeader} from './slides/AxelraSlideWithHeader';
 import {DefaultAxelraSlide} from './slides/DefaultAxelraSlide';
 import {ImagesWithCenteredLogo} from './slides/ImagesWithCenteredLogo';
 import {VentureHeroSlide} from './slides/VentureHeroSlide';
+import {VentureProductSlide} from './slides/VentureProductSlide';
 import {__COLORS} from './theme';
 import {VideoFirstOffice} from './VideoFirstOffice';
 
@@ -110,15 +111,21 @@ export const Sequences = () => {
 					subtitle="We started growing quickly."
 				/>
 			</Sequence>
-			<Sequence from={1660} durationInFrames={10}>
+			<Sequence from={1660} durationInFrames={15}>
 				<ColorTransition from={__COLORS.AXELRA_DARK_BLUE} to="#FF0070" />
 			</Sequence>
-			<Sequence from={1670} durationInFrames={200}>
+			<Sequence from={1675} durationInFrames={100}>
 				<VentureHeroSlide
 					title="Moflix"
 					subtitle="Platform and app to radically simplify digital telecommunication services with a focus on onboarding."
 					background="linear-gradient(46deg, #FF0070 0%, #FF0042 100%)"
 				/>
+			</Sequence>
+			<Sequence from={1775} durationInFrames={15}>
+				<ColorTransition from="#FF0070" to="#464D5B" />
+			</Sequence>
+			<Sequence from={1790} durationInFrames={200}>
+				<VentureProductSlide id="moflix" />
 			</Sequence>
 		</Scaler>
 	);

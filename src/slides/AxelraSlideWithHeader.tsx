@@ -7,7 +7,7 @@ import {__COLORS} from '../theme';
 import {BlackSubTitle, BlackTitle, DEFAULT_PADDING} from '../UI';
 
 const Container = styled(Flex)<{backgroundColor?: string}>`
-	background-color: ${(props) => props.backgroundColor ?? __COLORS.WHITE};
+	background: ${(props) => props.backgroundColor ?? __COLORS.WHITE};
 	width: 100%;
 `;
 
