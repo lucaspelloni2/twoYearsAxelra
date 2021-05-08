@@ -127,6 +127,16 @@ export const Sequences = () => {
 			<Sequence from={1790} durationInFrames={200}>
 				<VentureProductSlide id="moflix" />
 			</Sequence>
+			<Sequence from={1990} durationInFrames={15}>
+				<ColorTransition from={__COLORS.AXELRA_DARK_BLUE} to="#FF0070" />
+			</Sequence>
+			<Sequence from={2005} durationInFrames={100}>
+				<VentureHeroSlide
+					title="Sibex"
+					subtitle="Sibex is wonderful and app to radically simplify digital telecommunication services with a focus on onboarding."
+					background="linear-gradient(224deg, #2DD82F 0%, #041332 100%);"
+				/>
+			</Sequence>
 		</Scaler>
 	);
 };
