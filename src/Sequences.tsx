@@ -1,27 +1,18 @@
 import React from 'react';
 import {Sequence} from 'remotion';
-import {AxelraLogo} from './AxelraLogo';
 import {ColorTransition} from './ColorTransition';
-import {EmployeeGrowth} from './EmployeeGrowth';
-import {FoundingTeam} from './FoundingTeam';
-import {IncorporationImages} from './IncorporationImages';
-import {Logos} from './Logos';
 import {Scaler} from './Scaler';
 import {seconds} from './seconds';
-import {AxelraSlideWithHeader} from './slides/AxelraSlideWithHeader';
-import {DefaultAxelraSlide} from './slides/DefaultAxelraSlide';
-import {ImagesWithCenteredLogo} from './slides/ImagesWithCenteredLogo';
 import {VentureHeroSlide} from './slides/VentureHeroSlide';
 import {VentureProductSlide} from './slides/VentureProductSlide';
 import {__COLORS} from './theme';
-import {VideoFirstOffice} from './VideoFirstOffice';
 
 const AXELRA_SLIDE_DURATION_IN_FRAMES = seconds(3);
 
 export const Sequences = () => {
 	return (
 		<Scaler scale={2}>
-			<Sequence
+			{/*			<Sequence
 				from={0}
 				durationInFrames={AXELRA_SLIDE_DURATION_IN_FRAMES}
 				layout="none"
@@ -113,7 +104,7 @@ export const Sequences = () => {
 			</Sequence>
 			<Sequence from={1660} durationInFrames={15}>
 				<ColorTransition from={__COLORS.AXELRA_DARK_BLUE} to="#FF0070" />
-			</Sequence>
+			</Sequence>*/}
 			<Sequence from={1675} durationInFrames={100}>
 				<VentureHeroSlide
 					title="Moflix"

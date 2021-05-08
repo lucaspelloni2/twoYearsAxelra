@@ -1,5 +1,6 @@
 import {Col, Container, Flex, Row, Spacer} from 'axelra-styled-bootstrap-grid';
 import React from 'react';
+import {interpolate, spring, useCurrentFrame, useVideoConfig} from 'remotion';
 import styled from 'styled-components';
 import Swype1 from '../assets/ventures/swype/swype_1.svg';
 import Swype2 from '../assets/ventures/swype/swype_2.svg';
@@ -22,6 +23,7 @@ type ProductSlideProps = {
 const Title = styled(BlackTitle)`
 	color: white;
 	text-transform: initial;
+	font-size: 63px;
 `;
 const Subtitle = styled(BlackSubTitle)`
 	font-size: 40px;
@@ -66,6 +68,13 @@ export const VentureProductSlide = ({id}: Props) => {
 		firstWordColor,
 		description,
 	} = getElements({id}) as ProductSlideProps;
+	const videoConfig = useVideoConfig();
+	const frame = useCurrentFrame();
+	const text = description.split(' ').map((t) => ` ${t} `);
+	const opacity = interpolate(frame, [0, 10], [0, 1], {
+		extrapolateLeft: 'clamp',
+		extrapolateRight: 'clamp',
+	});
 	return (
 		<AxelraSlideWithHeader
 			title=""
@@ -75,25 +84,47 @@ export const VentureProductSlide = ({id}: Props) => {
 		>
 			<Container fluid style={{height: '100%'}}>
 				<Row flex={1} style={{height: '100%'}}>
-					<Col xs={0.5}>ajosfjosaf</Col>
+					<Col xs={0.5} />
 					<Col>
 						<Flex row flex={1} style={{height: '100%'}}>
 							<Flex column flex={1} justify="center">
 								<Flex row align="center">
-									<Subtitle>
+									<Subtitle style={{opacity}}>
 										<span style={{color: firstWordColor}}>{ventureName} </span>
 										{smallTitle}
 									</Subtitle>
 								</Flex>
 								<Spacer x3 />
 								<Title>
-									{description?.charAt(0) + description?.slice(1).toLowerCase()}
+									{text.map((t, i) => {
+										const springOpacity = spring({
+											fps: videoConfig.fps,
+											frame: frame - i * 2,
+											config: {
+												damping: 100,
+												stiffness: 200,
+												mass: 0.5,
+											},
+										});
+										return (
+											<span
+												key={t}
+												style={{
+													marginRight: 20,
+													opacity: springOpacity,
+													display: 'inline-block',
+												}}
+											>
+												{t}
+											</span>
+										);
+									})}
 								</Title>
 							</Flex>
 							<Flex flex={1}>askofajosfoasfjoasfjo</Flex>
 						</Flex>
 					</Col>
-					<Col xs={0.5}>ajosfjosaf</Col>
+					<Col xs={0.5} />
 				</Row>
 			</Container>
 		</AxelraSlideWithHeader>
