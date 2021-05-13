@@ -1,6 +1,12 @@
 import {Flex, Spacer, SPACING} from 'axelra-styled-bootstrap-grid';
 import React from 'react';
-import {Img} from 'remotion';
+import {
+	Img,
+	interpolate,
+	spring,
+	useCurrentFrame,
+	useVideoConfig,
+} from 'remotion';
 import styled from 'styled-components';
 import SwypeImg from '../assets/ventures/swype/card.png';
 import SwypeLogo from '../assets/ventures/swype/logo.png';
@@ -12,7 +18,7 @@ import {VentureType} from './VentureProductSlide';
 
 type VentureStatsType = {
 	logo: any;
-	images: ImageType[];
+	image: ImageType;
 	stats: string[];
 	hashtags: string[];
 };
@@ -22,7 +28,7 @@ const getElements = ({id}: VentureType): VentureStatsType | null => {
 		case 'moflix':
 			return {
 				logo: SwypeLogo,
-				images: [createImage({src: SwypeImg})],
+				image: createImage({src: SwypeImg, bottom: -100, left: -720}),
 				hashtags: ['TelTech', 'Onboarding', 'KYC', 'Subscription'],
 				stats: ['Start: Mai 2019', 'Go-Live: Dez 2019', 'Links: yalloswype.ch'],
 			};
@@ -65,7 +71,92 @@ const Stat = styled(BlackSubTitle)`
 `;
 
 export const VentureStatsSlide = ({id}: VentureType) => {
-	const {logo, hashtags, stats} = getElements({id}) as VentureStatsType;
+	const frame = useCurrentFrame();
+	const {fps, durationInFrames} = useVideoConfig();
+	const {logo, hashtags, stats, image} = getElements({id}) as VentureStatsType;
+
+	const opacity1 = interpolate(
+		frame,
+		[0, 10, durationInFrames - 10, durationInFrames],
+		[0, 1, 1, 0],
+		{
+			extrapolateLeft: 'clamp',
+			extrapolateRight: 'clamp',
+		}
+	);
+	const transformY1 = interpolate(
+		frame,
+		[0, 10, durationInFrames - 10, durationInFrames],
+		[-10, 0, 0, -10],
+		{
+			extrapolateLeft: 'clamp',
+			extrapolateRight: 'clamp',
+		}
+	);
+
+	const opacity2 = interpolate(
+		frame,
+		[10, 20, durationInFrames - 10, durationInFrames],
+		[0, 1, 1, 0],
+		{
+			extrapolateLeft: 'clamp',
+			extrapolateRight: 'clamp',
+		}
+	);
+	const transformY2 = interpolate(
+		frame,
+		[10, 20, durationInFrames - 10, durationInFrames],
+		[-10, 0, 0, -10],
+		{
+			extrapolateLeft: 'clamp',
+			extrapolateRight: 'clamp',
+		}
+	);
+
+	const opacity4 = interpolate(
+		frame,
+		[20, 30, durationInFrames - 10, durationInFrames],
+		[0, 1, 1, 0],
+		{
+			extrapolateLeft: 'clamp',
+			extrapolateRight: 'clamp',
+		}
+	);
+	const transformY4 = interpolate(
+		frame,
+		[20, 30, durationInFrames - 10, durationInFrames],
+		[-10, 0, 0, -10],
+		{
+			extrapolateLeft: 'clamp',
+			extrapolateRight: 'clamp',
+		}
+	);
+
+	const imageScaleIn = spring({
+		fps,
+		frame: frame - 45,
+		config: {
+			damping: 20,
+			stiffness: 200,
+			mass: 2,
+		},
+	});
+
+	const imageScaleOut = spring({
+		fps,
+		frame: frame - durationInFrames + 20,
+		config: {
+			damping: 20,
+			stiffness: 200,
+			mass: 0.5,
+		},
+	});
+
+	const imageScale =
+		frame < durationInFrames / 2 ? imageScaleIn : 1 - imageScaleOut;
+
+	const {src, ...style} = image;
+
 	return (
 		<AxelraSlideWithHeader
 			title=""
@@ -73,21 +164,61 @@ export const VentureStatsSlide = ({id}: VentureType) => {
 			backgroundColor="linear-gradient(180deg, #464D5B 0%, #2A2F3B 100%)"
 			logoColor={__COLORS.WHITE}
 		>
+			<Img
+				src={src}
+				style={{transform: `translateX(${imageScale * 550}px)`, ...style}}
+			/>
 			<Flex column flex={1} justify="center" align="center">
-				<Img src={logo} />
+				<Img
+					src={logo}
+					style={{opacity: opacity1, transform: `translateY(${transformY1}px)`}}
+				/>
 				<Spacer x5 />
-				<Flex row>
+				<Flex
+					row
+					style={{opacity: opacity2, transform: `translateY(${transformY2}px)`}}
+				>
 					{hashtags.map((h) => (
 						<Hashtag key={h}>#{h}</Hashtag>
 					))}
 				</Flex>
 				<Spacer x10 />
-				<Divider />
+				<Divider
+					style={{opacity: opacity4, transform: `translateY(${transformY4}px)`}}
+				/>
 				<Spacer x10 />
 				<Flex column>
-					{stats.map((s) => (
-						<Stat>{s}</Stat>
-					))}
+					{stats.map((s, i) => {
+						const inputRange = [
+							i + 30,
+							40,
+							durationInFrames - 10  - i,
+							durationInFrames - i,
+						];
+						const opacity3 = interpolate(frame, inputRange, [0, 1, 1, 0], {
+							extrapolateLeft: 'clamp',
+							extrapolateRight: 'clamp',
+						});
+						const transformY3 = interpolate(
+							frame,
+							inputRange,
+							[-10, 0, 0, -10],
+							{
+								extrapolateLeft: 'clamp',
+								extrapolateRight: 'clamp',
+							}
+						);
+						return (
+							<Stat
+								style={{
+									opacity: opacity3,
+									transform: `translateY(${transformY3}px)`,
+								}}
+							>
+								{s}
+							</Stat>
+						);
+					})}
 				</Flex>
 			</Flex>
 		</AxelraSlideWithHeader>
