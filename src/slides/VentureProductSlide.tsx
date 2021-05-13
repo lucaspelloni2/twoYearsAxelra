@@ -2,6 +2,7 @@ import {Col, Container, Flex, Row, Spacer} from 'axelra-styled-bootstrap-grid';
 import React from 'react';
 import {Img, spring, useCurrentFrame, useVideoConfig} from 'remotion';
 import styled from 'styled-components';
+import Sibex1 from '../assets/ventures/sibex/img.png';
 import Swype1 from '../assets/ventures/swype/swype_1.svg';
 import Swype2 from '../assets/ventures/swype/swype_2.svg';
 import Swype3 from '../assets/ventures/swype/swype_3.svg';
@@ -18,6 +19,7 @@ type ProductSlideProps = {
 	firstWordColor: string;
 	smallTitle: string;
 	description: string;
+	background: string;
 	ventureName: string;
 };
 
@@ -36,6 +38,7 @@ const getElements = ({id}: VentureType): ProductSlideProps | null => {
 		case 'moflix':
 			return {
 				firstWordColor: '#FF0042',
+				background: 'linear-gradient(180deg, #464D5B 0%, #2A2F3B 100%)',
 				images: [
 					createImage({src: Swype1, top: 100, left: 0, zIndex: 1}),
 					createImage({src: Swype2, top: 180, left: 260, zIndex: 2}),
@@ -47,7 +50,16 @@ const getElements = ({id}: VentureType): ProductSlideProps | null => {
 					'The first app-based mobile subscription platform in Switzerland offering a 100% digital customer experience. ',
 			};
 		case 'sibex':
-			return null;
+			return {
+				firstWordColor: '#12951B',
+				background:
+					'linear-gradient(180deg, rgba(22,28,34,1) 0%, #292E34 100%)',
+				images: [createImage({src: Sibex1, top: 250, right: -250, zIndex: 1})],
+				ventureName: 'Sibex',
+				smallTitle: 'with Axelra in 112 Days',
+				description:
+					'Trade OTC with the Whole World. No Middlemen, No Centralized Custody. Global Liquidity',
+			};
 		case 'livealytics':
 			return null;
 		case 'fqx':
@@ -62,8 +74,14 @@ const getElements = ({id}: VentureType): ProductSlideProps | null => {
 };
 
 export const VentureProductSlide = ({id}: VentureType) => {
-	const {smallTitle, ventureName, images, firstWordColor, description} =
-		getElements({id}) as ProductSlideProps;
+	const {
+		smallTitle,
+		ventureName,
+		background,
+		images,
+		firstWordColor,
+		description,
+	} = getElements({id}) as ProductSlideProps;
 	const videoConfig = useVideoConfig();
 	const frame = useCurrentFrame();
 	const text = description.split(' ').map((t) => ` ${t} `);
@@ -85,13 +103,12 @@ export const VentureProductSlide = ({id}: VentureType) => {
 			mass: 0.3,
 		},
 	});
-	const springOpacity =
-		springOpacityIn * (1 - springOpacityOut);
+	const springOpacity = springOpacityIn * (1 - springOpacityOut);
 	return (
 		<AxelraSlideWithHeader
 			title=""
 			subtitle=""
-			backgroundColor="linear-gradient(180deg, #464D5B 0%, #2A2F3B 100%)"
+			backgroundColor={background}
 			logoColor={__COLORS.WHITE}
 		>
 			<Container fluid style={{height: '100%'}}>

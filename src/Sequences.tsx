@@ -240,6 +240,9 @@ export const Sequences = () => {
 					background="linear-gradient(224deg, #2DD82F 0%, #041332 100%);"
 				/>
 			</Sequence>
+			<Sequence from={2505} durationInFrames={200}>
+				<VentureProductSlide id="sibex" />
+			</Sequence>
 		</Scaler>
 	);
 };
