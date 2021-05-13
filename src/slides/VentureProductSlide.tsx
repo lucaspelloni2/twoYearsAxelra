@@ -1,10 +1,11 @@
 import {Col, Container, Flex, Row, Spacer} from 'axelra-styled-bootstrap-grid';
 import React from 'react';
-import {interpolate, spring, useCurrentFrame, useVideoConfig} from 'remotion';
+import {Img, spring, useCurrentFrame, useVideoConfig} from 'remotion';
 import styled from 'styled-components';
 import Swype1 from '../assets/ventures/swype/swype_1.svg';
 import Swype2 from '../assets/ventures/swype/swype_2.svg';
 import Swype3 from '../assets/ventures/swype/swype_3.svg';
+import {createImage} from '../ImageType';
 import {__COLORS} from '../theme';
 import {BlackSubTitle, BlackTitle} from '../UI';
 import {AxelraSlideWithHeader} from './AxelraSlideWithHeader';
@@ -36,9 +37,9 @@ const getElements = ({id}: Props): ProductSlideProps | null => {
 			return {
 				firstWordColor: '#FF0042',
 				images: [
-					{id: 'swype1', src: Swype1},
-					{id: 'swype2', src: Swype2},
-					{id: 'swype3', src: Swype3},
+					createImage({src: Swype1, top: 100, left: 0, zIndex: 1}),
+					createImage({src: Swype2, top: 180, left: 260, zIndex: 2}),
+					createImage({src: Swype3, top: 260, left: 520, zIndex: 3}),
 				],
 				ventureName: 'Swype',
 				smallTitle: 'with Axelra in 112 Days',
@@ -61,20 +62,31 @@ const getElements = ({id}: Props): ProductSlideProps | null => {
 };
 
 export const VentureProductSlide = ({id}: Props) => {
-	const {
-		smallTitle,
-		ventureName,
-		images,
-		firstWordColor,
-		description,
-	} = getElements({id}) as ProductSlideProps;
+	const {smallTitle, ventureName, images, firstWordColor, description} =
+		getElements({id}) as ProductSlideProps;
 	const videoConfig = useVideoConfig();
 	const frame = useCurrentFrame();
 	const text = description.split(' ').map((t) => ` ${t} `);
-	const opacity = interpolate(frame, [0, 10], [0, 1], {
-		extrapolateLeft: 'clamp',
-		extrapolateRight: 'clamp',
+	const springOpacityIn = spring({
+		fps: videoConfig.fps,
+		frame: frame - 40,
+		config: {
+			damping: 100,
+			stiffness: 200,
+			mass: 0.5,
+		},
 	});
+	const springOpacityOut = spring({
+		fps: videoConfig.fps,
+		frame: frame - videoConfig.durationInFrames + 20,
+		config: {
+			damping: 100,
+			stiffness: 150,
+			mass: 0.3,
+		},
+	});
+	const springOpacity =
+		springOpacityIn * (1 - springOpacityOut);
 	return (
 		<AxelraSlideWithHeader
 			title=""
@@ -89,7 +101,7 @@ export const VentureProductSlide = ({id}: Props) => {
 						<Flex row flex={1} style={{height: '100%'}}>
 							<Flex column flex={1} justify="center">
 								<Flex row align="center">
-									<Subtitle style={{opacity}}>
+									<Subtitle style={{opacity: springOpacity}}>
 										<span style={{color: firstWordColor}}>{ventureName} </span>
 										{smallTitle}
 									</Subtitle>
@@ -97,15 +109,26 @@ export const VentureProductSlide = ({id}: Props) => {
 								<Spacer x3 />
 								<Title>
 									{text.map((t, i) => {
-										const springOpacity = spring({
+										const springOpacityIn = spring({
 											fps: videoConfig.fps,
-											frame: frame - i * 2,
+											frame: frame - i * 3,
 											config: {
 												damping: 100,
 												stiffness: 200,
 												mass: 0.5,
 											},
 										});
+										const springOpacityOut = spring({
+											fps: videoConfig.fps,
+											frame: frame - videoConfig.durationInFrames + 20,
+											config: {
+												damping: 100,
+												stiffness: 150,
+												mass: 0.3,
+											},
+										});
+										const springOpacity =
+											springOpacityIn * (1 - springOpacityOut);
 										return (
 											<span
 												key={t}
@@ -121,7 +144,44 @@ export const VentureProductSlide = ({id}: Props) => {
 									})}
 								</Title>
 							</Flex>
-							<Flex flex={1}>askofajosfoasfjoasfjo</Flex>
+							<Flex flex={1}>
+								<Flex
+									row
+									align="center"
+									justify="center"
+									style={{position: 'relative'}}
+								>
+									{images.map((image, i) => {
+										const {src, id, ...style} = image;
+										const spIn = spring({
+											fps: videoConfig.fps,
+											frame: frame - i * 8 - 20,
+											config: {
+												damping: 100,
+												stiffness: 150,
+												mass: 0.3,
+											},
+										});
+										const spOut = spring({
+											fps: videoConfig.fps,
+											frame: frame - videoConfig.durationInFrames + 20,
+											config: {
+												damping: 100,
+												stiffness: 150,
+												mass: 0.3,
+											},
+										});
+										const scale = spIn * (1 - spOut);
+										return (
+											<Img
+												key={id}
+												src={src}
+												style={{transform: `scale(${scale})`, ...style}}
+											/>
+										);
+									})}
+								</Flex>
+							</Flex>
 						</Flex>
 					</Col>
 					<Col xs={0.5} />
