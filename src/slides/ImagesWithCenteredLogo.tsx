@@ -2,18 +2,19 @@ import {Flex} from 'axelra-styled-bootstrap-grid';
 import React, {ReactNode} from 'react';
 import {spring, useCurrentFrame, useVideoConfig} from 'remotion';
 import styled from 'styled-components';
+import {__COLORS} from '../theme';
 
-const Container = styled.div`
+const Container = styled.div<{backgroundScreen?: string}>`
 	width: 100%;
 	height: 100%;
-	background-color: white;
+	background: ${(props) => props.backgroundScreen ?? __COLORS.WHITE};
 `;
 
 const LogoContainer = styled(Flex)<{background: string}>`
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	background-color: ${(props) => props.background};
+	background: ${(props) => props.background};
 	border-radius: 10px;
 	padding: 10px 50px;
 	z-index: 10;
@@ -23,11 +24,13 @@ const LogoContainer = styled(Flex)<{background: string}>`
 type Props = {
 	logo: ReactNode;
 	backgroundLogo: string;
+	backgroundScreen?: string;
 	children: ReactNode;
 };
 export const ImagesWithCenteredLogo = ({
 	logo,
 	backgroundLogo,
+	backgroundScreen,
 	children,
 }: Props) => {
 	const frame = useCurrentFrame();
@@ -36,7 +39,7 @@ export const ImagesWithCenteredLogo = ({
 	const scaleLogoOut = spring({fps, frame: frame - durationInFrames + 20});
 	const scale = Math.max(scaleLogoIn * (1 - scaleLogoOut), 0);
 	return (
-		<Container>
+		<Container backgroundScreen={backgroundScreen}>
 			<LogoContainer
 				column
 				align="center"

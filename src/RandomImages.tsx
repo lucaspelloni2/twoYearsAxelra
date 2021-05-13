@@ -12,50 +12,12 @@ const Container = styled.div`
 	height: 100%;
 `;
 
-const images: ImageType[] = [
-	createImage({
-		left: 0,
-		top: -10,
-		width: 840,
-		zIndex: 5,
-		height: 'auto',
-		src: Inc1,
-	}),
 
-	createImage({
-		right: 0,
-		top: -20,
-		width: 650,
-		zIndex: 6,
-		height: 'auto',
-		src: Inc3,
-	}),
-	createImage({
-		left: -10,
-		zIndex: 6,
-		bottom: -48,
-		width: 890,
-		height: 'auto',
-		src: Inc5,
-	}),
-	createImage({
-		right: 500,
-		zIndex: 2,
-		bottom: -178,
-		width: 740,
-		height: 'auto',
-		src: Inc4,
-	}),
-	/*	createImage({
-		right: 620,
-		top: -130,
-		width: 500,
-		height: 'auto',
-		src: Inc2,
-	}),*/
-];
+type Props = {
+	images: ImageType[];
+};
 
-export const IncorporationImages = () => {
+export const RandomImages = ({images}: Props) => {
 	const frame = useCurrentFrame();
 	const {fps, durationInFrames} = useVideoConfig();
 	return (
