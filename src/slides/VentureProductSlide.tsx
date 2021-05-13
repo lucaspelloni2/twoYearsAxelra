@@ -9,7 +9,7 @@ import {createImage} from '../ImageType';
 import {__COLORS} from '../theme';
 import {BlackSubTitle, BlackTitle} from '../UI';
 import {AxelraSlideWithHeader} from './AxelraSlideWithHeader';
-type Props = {
+export type VentureType = {
 	id: 'moflix' | 'sibex' | 'livealytics' | 'fqx' | 'gioia' | 'freya';
 };
 
@@ -31,7 +31,7 @@ const Subtitle = styled(BlackSubTitle)`
 	color: white;
 `;
 
-const getElements = ({id}: Props): ProductSlideProps | null => {
+const getElements = ({id}: VentureType): ProductSlideProps | null => {
 	switch (id) {
 		case 'moflix':
 			return {
@@ -61,7 +61,7 @@ const getElements = ({id}: Props): ProductSlideProps | null => {
 	}
 };
 
-export const VentureProductSlide = ({id}: Props) => {
+export const VentureProductSlide = ({id}: VentureType) => {
 	const {smallTitle, ventureName, images, firstWordColor, description} =
 		getElements({id}) as ProductSlideProps;
 	const videoConfig = useVideoConfig();
