@@ -1,25 +1,39 @@
 import React from 'react';
 import {Img, Sequence} from 'remotion';
+import LiveLogo from '../src/assets/ventures/livealytics/img_5.png';
 import SwypeLogo from '../src/assets/ventures/swype/logo.png';
 import Inc1 from './assets/inc1.jpeg';
 import Inc3 from './assets/inc3.jpeg';
 import Inc4 from './assets/inc4.jpeg';
 import Inc5 from './assets/inc5.jpeg';
+import Live1 from './assets/ventures/livealytics/images/img.png';
+import Live2 from './assets/ventures/livealytics/images/img_1.png';
+import Live3 from './assets/ventures/livealytics/images/img_2.png';
+import Live4 from './assets/ventures/livealytics/images/img_3.png';
+import Live5 from './assets/ventures/livealytics/images/img_4.png';
 import Swype1 from './assets/ventures/swype/img_1.png';
 import Swype2 from './assets/ventures/swype/img_2.png';
 import Swype3 from './assets/ventures/swype/img_3.png';
 import Swype4 from './assets/ventures/swype/img_4.png';
 import Swype5 from './assets/ventures/swype/img_5.png';
 import Swype6 from './assets/ventures/swype/img_6.png';
+import {AxelraLogo} from './AxelraLogo';
 import {ColorTransition} from './ColorTransition';
+import {EmployeeGrowth} from './EmployeeGrowth';
+import {FoundingTeam} from './FoundingTeam';
 import {createImage, ImageType} from './ImageType';
+import {Logos} from './Logos';
 import {RandomImages} from './RandomImages';
 import {Scaler} from './Scaler';
 import {seconds} from './seconds';
+import {AxelraSlideWithHeader} from './slides/AxelraSlideWithHeader';
+import {DefaultAxelraSlide} from './slides/DefaultAxelraSlide';
 import {ImagesWithCenteredLogo} from './slides/ImagesWithCenteredLogo';
 import {VentureHeroSlide} from './slides/VentureHeroSlide';
 import {VentureProductSlide} from './slides/VentureProductSlide';
 import {VentureStatsSlide} from './slides/VentureStatsSlide';
+import {__COLORS} from './theme';
+import {VideoFirstOffice} from './VideoFirstOffice';
 
 const AXELRA_SLIDE_DURATION_IN_FRAMES = seconds(3);
 
@@ -109,10 +123,53 @@ const swypeImages: ImageType[] = [
 	}),
 ];
 
+const liveImages: ImageType[] = [
+	createImage({
+		left: -32,
+		top: -10,
+		width: 900,
+		zIndex: 5,
+		height: 'auto',
+		src: Live1,
+	}),
+	createImage({
+		right: 0,
+		top: -120,
+		width: 650,
+		zIndex: 6,
+		height: 'auto',
+		src: Live2,
+	}),
+	createImage({
+		left: -10,
+		zIndex: 3,
+		bottom: -10,
+		width: 600,
+		height: 'auto',
+		src: Live3,
+	}),
+	createImage({
+		right: 600,
+		zIndex: 1,
+		bottom: -50,
+		width: 830,
+		height: 'auto',
+		src: Live4,
+	}),
+	createImage({
+		right: 594,
+		zIndex: 0,
+		top: -105,
+		width: 470,
+		height: 'auto',
+		src: Live5,
+	}),
+];
+
 export const Sequences = () => {
 	return (
 		<Scaler scale={2}>
-			{/*			<Sequence
+			<Sequence
 				from={0}
 				durationInFrames={AXELRA_SLIDE_DURATION_IN_FRAMES}
 				layout="none"
@@ -155,7 +212,7 @@ export const Sequences = () => {
 					logo={<AxelraLogo width={185} />}
 					backgroundLogo={__COLORS.WHITE}
 				>
-					<IncorporationImages />
+					<RandomImages images={incorporationImages} />
 				</ImagesWithCenteredLogo>
 			</Sequence>
 			<Sequence from={670} durationInFrames={5}>
@@ -204,7 +261,7 @@ export const Sequences = () => {
 			</Sequence>
 			<Sequence from={1660} durationInFrames={15}>
 				<ColorTransition from={__COLORS.AXELRA_DARK_BLUE} to="#FF0070" />
-			</Sequence>*/}
+			</Sequence>
 			<Sequence from={1675} durationInFrames={100}>
 				<VentureHeroSlide
 					title="Moflix"
@@ -242,6 +299,43 @@ export const Sequences = () => {
 			</Sequence>
 			<Sequence from={2505} durationInFrames={200}>
 				<VentureProductSlide id="sibex" />
+			</Sequence>
+			<Sequence from={2705} durationInFrames={200}>
+				<VentureStatsSlide id="sibex" />
+			</Sequence>
+			<Sequence from={2905} durationInFrames={300}>
+				<EmployeeGrowth
+					step={2}
+					title="5 + 2 Axelrators"
+					subtitle="We started growing quickly."
+					sizeOldEmployees={200}
+					sizeNewEmployees={300}
+				/>
+			</Sequence>
+			<Sequence from={3205} durationInFrames={15}>
+				<ColorTransition from={__COLORS.AXELRA_DARK_BLUE} to="#1FB985" />
+			</Sequence>
+			<Sequence from={3220} durationInFrames={100}>
+				<VentureHeroSlide
+					title="Livealytics"
+					subtitle="Analytics and IoT services to measure visitor engagement."
+					background="linear-gradient(79deg, #1FB985 2%, #1AE09E 100%)"
+				/>
+			</Sequence>
+			<Sequence from={3320} durationInFrames={200}>
+				<VentureProductSlide id="livealytics" />
+			</Sequence>
+			<Sequence from={3520} durationInFrames={200}>
+				<VentureStatsSlide id="livealytics" />
+			</Sequence>
+			<Sequence from={3720} durationInFrames={200} layout="none">
+				<ImagesWithCenteredLogo
+					logo={<Img src={LiveLogo} />}
+					backgroundLogo="linear-gradient(79deg, #1FB985 2%, #1AE09E 100%)"
+					backgroundScreen="linear-gradient(79deg, #1FB985 2%, #1AE09E 100%)"
+				>
+					<RandomImages images={liveImages} />
+				</ImagesWithCenteredLogo>
 			</Sequence>
 		</Scaler>
 	);
