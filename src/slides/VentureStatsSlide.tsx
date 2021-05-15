@@ -8,6 +8,10 @@ import {
 	useVideoConfig,
 } from 'remotion';
 import styled from 'styled-components';
+import LiveImg from '../assets/ventures/livealytics/img_3.png';
+import LiveLogo from '../assets/ventures/livealytics/img_1.png';
+import SibexLogo from '../assets/ventures/sibex/img_1.png';
+import SibexImg from '../assets/ventures/sibex/img_2.png';
 import SwypeImg from '../assets/ventures/swype/card.png';
 import SwypeLogo from '../assets/ventures/swype/logo.png';
 import {createImage, ImageType} from '../ImageType';
@@ -21,6 +25,31 @@ type VentureStatsType = {
 	image: ImageType;
 	stats: string[];
 	hashtags: string[];
+	background: string;
+	topFinTech?: string;
+};
+
+const TopFintechContainer = styled.div`
+	width: 200px;
+	height: 200px;
+	background: red;
+	position: absolute;
+	right: 250px;
+	bottom: 150px;
+`;
+
+const Verified = () => {
+	return (
+		<svg
+			viewBox="0 0 512 512"
+			style={{width: 55, height: 55, color: '#2E77D0'}}
+		>
+			<path
+				fill="currentColor"
+				d="M512 256c0-37.7-23.7-69.9-57.1-82.4 14.7-32.4 8.8-71.9-17.9-98.6-26.7-26.7-66.2-32.6-98.6-17.9C325.9 23.7 293.7 0 256 0s-69.9 23.7-82.4 57.1c-32.4-14.7-72-8.8-98.6 17.9-26.7 26.7-32.6 66.2-17.9 98.6C23.7 186.1 0 218.3 0 256s23.7 69.9 57.1 82.4c-14.7 32.4-8.8 72 17.9 98.6 26.6 26.6 66.1 32.7 98.6 17.9 12.5 33.3 44.7 57.1 82.4 57.1s69.9-23.7 82.4-57.1c32.6 14.8 72 8.7 98.6-17.9 26.7-26.7 32.6-66.2 17.9-98.6 33.4-12.5 57.1-44.7 57.1-82.4zm-144.8-44.25L236.16 341.74c-4.31 4.28-11.28 4.25-15.55-.06l-75.72-76.33c-4.28-4.31-4.25-11.28.06-15.56l26.03-25.82c4.31-4.28 11.28-4.25 15.56.06l42.15 42.49 97.2-96.42c4.31-4.28 11.28-4.25 15.55.06l25.82 26.03c4.28 4.32 4.26 11.29-.06 15.56z"
+			/>
+		</svg>
+	);
 };
 
 const getElements = ({id}: VentureType): VentureStatsType | null => {
@@ -31,11 +60,35 @@ const getElements = ({id}: VentureType): VentureStatsType | null => {
 				image: createImage({src: SwypeImg, bottom: -100, left: -720}),
 				hashtags: ['TelTech', 'Onboarding', 'KYC', 'Subscription'],
 				stats: ['Start: Mai 2019', 'Go-Live: Dez 2019', 'Links: yalloswype.ch'],
+				background: 'linear-gradient(180deg, #464D5B 0%, #2A2F3B 100%)',
 			};
 		case 'sibex':
-			return null;
+			return {
+				logo: SibexLogo,
+				image: createImage({src: SibexImg, bottom: -100, left: -1162}),
+				hashtags: ['FinTech', 'Blockchain', 'Crypto', 'AtomicSwaps'],
+				stats: ['Start: June 2019', 'Go-Live: Sep 2019', 'Links: sibex.io'],
+				background:
+					'linear-gradient(180deg, rgba(22,28,34,1) 0%, #292E34 100%)',
+				topFinTech: 'Top 10 Fintech in CH',
+			};
 		case 'livealytics':
-			return null;
+			return {
+				background: 'linear-gradient(79deg, #1FB985 2%, #1AE09E 100%)',
+				logo: LiveLogo,
+				stats: [
+					'Start: June 2019',
+					'Go-Live: Aug 2019',
+					'Links: livealytics.com',
+				],
+				hashtags: ['FinTech', 'Marketing', 'IoT', 'AWS'],
+				image: createImage({
+					src: LiveImg,
+					bottom: 0,
+					left: -650,
+
+				}),
+			};
 		case 'fqx':
 			return null;
 		case 'gioia':
@@ -73,8 +126,23 @@ const Stat = styled(BlackSubTitle)`
 export const VentureStatsSlide = ({id}: VentureType) => {
 	const frame = useCurrentFrame();
 	const {fps, durationInFrames} = useVideoConfig();
-	const {logo, hashtags, stats, image} = getElements({id}) as VentureStatsType;
-
+	const {logo, hashtags, topFinTech, stats, image, background} = getElements({
+		id,
+	}) as VentureStatsType;
+	const spIn = spring({
+		fps,
+		frame: frame - durationInFrames / 2,
+	});
+	const spOut = spring({
+		fps,
+		frame: frame - durationInFrames + 20,
+		config: {
+			mass: 2,
+			damping: 200,
+			stiffness: 200,
+		},
+	});
+	const scale = spIn * (1 - spOut);
 	const opacity1 = interpolate(
 		frame,
 		[0, 10, durationInFrames - 10, durationInFrames],
@@ -161,7 +229,7 @@ export const VentureStatsSlide = ({id}: VentureType) => {
 		<AxelraSlideWithHeader
 			title=""
 			subtitle=""
-			backgroundColor="linear-gradient(180deg, #464D5B 0%, #2A2F3B 100%)"
+			backgroundColor={background}
 			logoColor={__COLORS.WHITE}
 		>
 			<Img
@@ -192,7 +260,7 @@ export const VentureStatsSlide = ({id}: VentureType) => {
 						const inputRange = [
 							i + 30,
 							40,
-							durationInFrames - 10  - i,
+							durationInFrames - 10 - i,
 							durationInFrames - i,
 						];
 						const opacity3 = interpolate(frame, inputRange, [0, 1, 1, 0], {
@@ -219,6 +287,32 @@ export const VentureStatsSlide = ({id}: VentureType) => {
 							</Stat>
 						);
 					})}
+					{topFinTech && <Spacer x2 />}
+					{topFinTech && (
+						<Flex
+							row
+							align="center"
+							style={{
+								transform: `scale(${scale})`,
+								backgroundColor: 'rgba(255, 255, 255, 0.05)',
+								padding: '12px 36px',
+								borderRadius: 12,
+							}}
+						>
+							<Verified />
+							<Spacer x2 />
+							<BlackTitle
+								style={{
+									fontSize: 36,
+									color: 'white',
+									marginTop: 10,
+									textTransform: 'initial',
+								}}
+							>
+								{topFinTech}
+							</BlackTitle>
+						</Flex>
+					)}
 				</Flex>
 			</Flex>
 		</AxelraSlideWithHeader>

@@ -11,8 +11,7 @@ const Container = styled.div<{size?: number}>`
 	border-radius: 50%;
 	border: 5px solid ${__COLORS.AXELRA_LIGHT_BLUE};
 	overflow: hidden;
-	margin: 0 ${SPACING * 2}px;
-
+	margin: ${SPACING * 3}px;
 `;
 
 const Image = styled(Img)`
@@ -44,8 +43,9 @@ export const TeamMember = ({member, size, hasNoName}: Props) => {
 			<Container key={id} size={size}>
 				<Image src={src} />
 			</Container>
-			<Spacer x8 />
-			{name && !hasNoName && <Subtitle>{name}</Subtitle>}
+			{name && !hasNoName && (
+				<Subtitle style={{marginBottom: 30}}> {name}</Subtitle>
+			)}
 		</Flex>
 	);
 };
