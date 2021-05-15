@@ -3,8 +3,12 @@ import React from 'react';
 import {interpolate, spring, useCurrentFrame, useVideoConfig} from 'remotion';
 import styled from 'styled-components';
 import Calvin from './assets/team/calvin_guetzli.jpg';
+import David from './assets/team/david_guetzli.jpg';
+import Ile from './assets/team/ile_guetzli.jpg';
 import Jonas from './assets/team/jonas_guetzli.jpg';
 import Jonny from './assets/team/jonny_guetzli.jpg';
+import Manuel from './assets/team/manuel_g_guetzli.jpg';
+import Nico from './assets/team/nico_guetzli.jpg';
 import {founders} from './FoundingTeam';
 import {AxelraSlideWithHeader} from './slides/AxelraSlideWithHeader';
 import {TeamMember, TeamMemberType} from './TeamMember';
@@ -37,6 +41,34 @@ const jonas: TeamMemberType = {
 	role: 'Full Stack Developer',
 };
 
+const nico: TeamMemberType = {
+	id: 'nico',
+	src: Nico,
+	name: 'Nicolas Gordillo',
+	role: 'Full Stack Developer',
+};
+
+const ile: TeamMemberType = {
+	id: 'ile',
+	src: Ile,
+	name: 'Ile Cepilov',
+	role: 'Full Stack Developer',
+};
+
+const manuel: TeamMemberType = {
+	id: 'manu',
+	src: Manuel,
+	name: 'Manuel Grossmann',
+	role: 'Full Stack Developer',
+};
+
+const david: TeamMemberType = {
+	id: 'david',
+	src: David,
+	name: 'David Duran',
+	role: 'Full Stack Developer',
+};
+
 const getTeam = (step: number): TeamMemberType[] => {
 	if (step === 1) {
 		return [...founders, {isNew: true, ...jonny}];
@@ -47,6 +79,30 @@ const getTeam = (step: number): TeamMemberType[] => {
 			...[
 				{isNew: true, ...calvin},
 				{isNew: true, ...jonas},
+			],
+		];
+	} else if (step === 3) {
+		return [
+			...founders,
+			jonny,
+			calvin,
+			jonas,
+			...[
+				{isNew: true, ...nico},
+				{isNew: true, ...ile},
+			],
+		];
+	} else if (step === 4) {
+		return [
+			...founders,
+			jonny,
+			calvin,
+			jonas,
+			nico,
+			ile,
+			...[
+				{isNew: true, ...manuel},
+				{isNew: true, ...david},
 			],
 		];
 	}
@@ -153,7 +209,6 @@ export const EmployeeGrowth = ({
 							return (
 								<div style={{transform: `scale(${scale})`}}>
 									<TeamMember member={m} size={sizeNewEmployees ?? 400} />
-
 								</div>
 							);
 						})}

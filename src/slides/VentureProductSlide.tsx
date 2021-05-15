@@ -2,11 +2,12 @@ import {Col, Container, Flex, Row, Spacer} from 'axelra-styled-bootstrap-grid';
 import React from 'react';
 import {Img, spring, useCurrentFrame, useVideoConfig} from 'remotion';
 import styled from 'styled-components';
+import FQX1 from '../assets/ventures/fqx/img.png';
+import Live1 from '../assets/ventures/livealytics/img.png';
 import Sibex1 from '../assets/ventures/sibex/img.png';
 import Swype1 from '../assets/ventures/swype/swype_1.svg';
 import Swype2 from '../assets/ventures/swype/swype_2.svg';
 import Swype3 from '../assets/ventures/swype/swype_3.svg';
-import Live1 from '../assets/ventures/livealytics/img.png'
 import {createImage} from '../ImageType';
 import {__COLORS} from '../theme';
 import {BlackSubTitle, BlackTitle} from '../UI';
@@ -72,7 +73,15 @@ const getElements = ({id}: VentureType): ProductSlideProps | null => {
 					'Measurement solutions provide insights to improve live customer experiences, optimise operational costs and increase sales.',
 			};
 		case 'fqx':
-			return null;
+			return {
+				firstWordColor: '#ffffff',
+				background: 'linear-gradient(224deg, #5980F0 0%, #2D49DC 100%)',
+				images: [createImage({src: FQX1, top: 138, right: -100, zIndex: 1})],
+				ventureName: 'FQX',
+				smallTitle: 'with Axelra in 112 Days',
+				description:
+					'FQX enables the issuance and transfer of electronic negotiable instruments (eNI™) with theenforceability in 164 countries based on a banking-grade DLT environment.',
+			};
 		case 'gioia':
 			return null;
 		case 'freya':

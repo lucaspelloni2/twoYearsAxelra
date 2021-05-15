@@ -2,14 +2,12 @@ import {Flex} from 'axelra-styled-bootstrap-grid';
 import React from 'react';
 import {interpolate, useCurrentFrame, useVideoConfig, Video} from 'remotion';
 import styled from 'styled-components';
-import Vid from './assets/first-office.mp4';
+
 import {__COLORS} from './theme';
 const Container = styled(Flex)``;
 
-// TODO: do it global
-const scale = 2;
-
-export const VideoFirstOffice = () => {
+type Props = {video: any};
+export const VideoFirstOffice = ({video}: Props) => {
 	const frame = useCurrentFrame();
 	const {width, durationInFrames} = useVideoConfig();
 	const opacity = interpolate(
@@ -25,7 +23,7 @@ export const VideoFirstOffice = () => {
 			flex={1}
 			style={{backgroundColor: __COLORS.AXELRA_DARK_BLUE}}
 		>
-			<Video src={Vid} width={width / 2} style={{opacity}} />
+			<Video src={video} width={width / 2} style={{opacity}} />
 		</Container>
 	);
 };

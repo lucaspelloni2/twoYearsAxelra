@@ -8,8 +8,10 @@ import {
 	useVideoConfig,
 } from 'remotion';
 import styled from 'styled-components';
-import LiveImg from '../assets/ventures/livealytics/img_3.png';
+import FQXLogo from '../assets/ventures/fqx/img_3.png';
+import FQXImg from '../assets/ventures/fqx/img_1.png';
 import LiveLogo from '../assets/ventures/livealytics/img_1.png';
+import LiveImg from '../assets/ventures/livealytics/img_3.png';
 import SibexLogo from '../assets/ventures/sibex/img_1.png';
 import SibexImg from '../assets/ventures/sibex/img_2.png';
 import SwypeImg from '../assets/ventures/swype/card.png';
@@ -86,11 +88,27 @@ const getElements = ({id}: VentureType): VentureStatsType | null => {
 					src: LiveImg,
 					bottom: 0,
 					left: -650,
-
 				}),
 			};
 		case 'fqx':
-			return null;
+			return {
+				background: 'linear-gradient(224deg, #5980F0 0%, #2D49DC 100%)',
+				topFinTech: 'Top 5 Fintech in CH',
+				stats: ['Start: Dez 2019', 'Go-Live: Mai 2020', 'Links: fqx.ch'],
+				logo: FQXLogo,
+				image: createImage({
+					src: FQXImg,
+					bottom: -120,
+					left: -910,
+				}),
+				hashtags: [
+					'FinTech',
+					'PromissoryNotes',
+					'Onboarding',
+					'KYC',
+					'Blockchain',
+				],
+			};
 		case 'gioia':
 			return null;
 		case 'freya':

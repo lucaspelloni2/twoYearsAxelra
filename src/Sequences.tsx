@@ -2,6 +2,8 @@ import React from 'react';
 import {Img, Sequence} from 'remotion';
 import LiveLogo from '../src/assets/ventures/livealytics/img_5.png';
 import SwypeLogo from '../src/assets/ventures/swype/logo.png';
+import FirstOfficeVideo from './assets/first-office.mp4';
+import SecondOfficeVideo from './assets/second-office.mp4';
 import Inc1 from './assets/inc1.jpeg';
 import Inc3 from './assets/inc3.jpeg';
 import Inc4 from './assets/inc4.jpeg';
@@ -249,7 +251,7 @@ export const Sequences = () => {
 					titleColor={__COLORS.WHITE}
 					logoColor={__COLORS.WHITE}
 				>
-					<VideoFirstOffice />
+					<VideoFirstOffice video={FirstOfficeVideo} />
 				</AxelraSlideWithHeader>
 			</Sequence>
 			<Sequence from={1360} durationInFrames={300}>
@@ -333,6 +335,68 @@ export const Sequences = () => {
 					logo={<Img src={LiveLogo} />}
 					backgroundLogo="linear-gradient(79deg, #1FB985 2%, #1AE09E 100%)"
 					backgroundScreen="linear-gradient(79deg, #1FB985 2%, #1AE09E 100%)"
+				>
+					<RandomImages images={liveImages} />
+				</ImagesWithCenteredLogo>
+			</Sequence>
+			<Sequence from={3920} durationInFrames={15}>
+				<ColorTransition from="#1FB985" to={__COLORS.AXELRA_DARK_BLUE} />
+			</Sequence>
+			<Sequence from={3935} durationInFrames={200}>
+				<EmployeeGrowth
+					step={3}
+					title="7 + 2 Axelrators"
+					subtitle="We started growing quickly."
+					sizeOldEmployees={190}
+					sizeNewEmployees={300}
+				/>
+			</Sequence>
+			<Sequence from={4135} durationInFrames={15}>
+				<ColorTransition from={__COLORS.AXELRA_DARK_BLUE} to="#ffffff" />
+			</Sequence>
+			<Sequence from={4150} durationInFrames={200} layout="none">
+				<DefaultAxelraSlide titleText="Growth" titleSubText="Office Upgrade" />
+			</Sequence>
+			<Sequence from={4350} durationInFrames={390} layout="none">
+				<AxelraSlideWithHeader
+					title="Growth"
+					subtitle="Office Upgrade."
+					titleColor={__COLORS.WHITE}
+					logoColor={__COLORS.WHITE}
+				>
+					<VideoFirstOffice video={SecondOfficeVideo} />
+				</AxelraSlideWithHeader>
+			</Sequence>
+			<Sequence from={4740} durationInFrames={200}>
+				<EmployeeGrowth
+					step={4}
+					title="9 + 2 Axelrators"
+					subtitle="More projects more talents."
+					sizeOldEmployees={190}
+					sizeNewEmployees={300}
+				/>
+			</Sequence>
+			<Sequence from={4940} durationInFrames={15}>
+				<ColorTransition from={__COLORS.AXELRA_DARK_BLUE} to="#5980F0" />
+			</Sequence>
+			<Sequence from={4955} durationInFrames={100}>
+				<VentureHeroSlide
+					title="FQX"
+					subtitle="Liquidity where needed."
+					background="linear-gradient(224deg, #5980F0 0%, #2D49DC 100%)"
+				/>
+			</Sequence>
+			<Sequence from={5055} durationInFrames={200}>
+				<VentureProductSlide id="fqx" />
+			</Sequence>
+			<Sequence from={5255} durationInFrames={200}>
+				<VentureStatsSlide id="fqx" />
+			</Sequence>
+			<Sequence from={5455} durationInFrames={200} layout="none">
+				<ImagesWithCenteredLogo
+					logo={<Img src={LiveLogo} />}
+					backgroundLogo="#ffffff"
+					backgroundScreen="linear-gradient(224deg, #5980F0 0%, #2D49DC 100%)"
 				>
 					<RandomImages images={liveImages} />
 				</ImagesWithCenteredLogo>
