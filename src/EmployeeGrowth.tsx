@@ -57,8 +57,16 @@ type Props = {
 	title: string;
 	step: number;
 	subtitle: string;
+	sizeOldEmployees?: number;
+	sizeNewEmployees?: number;
 };
-export const EmployeeGrowth = ({step, title, subtitle}: Props) => {
+export const EmployeeGrowth = ({
+	step,
+	title,
+	subtitle,
+	sizeOldEmployees,
+	sizeNewEmployees,
+}: Props) => {
 	const team = getTeam(step);
 	const frame = useCurrentFrame();
 	const {fps, durationInFrames} = useVideoConfig();
@@ -106,7 +114,11 @@ export const EmployeeGrowth = ({step, title, subtitle}: Props) => {
 									const scale = spIn * (1 - spOut);
 									return (
 										<div style={{transform: `scale(${scale})`}}>
-											<TeamMember hasNoName member={m} size={210} />
+											<TeamMember
+												hasNoName
+												member={m}
+												size={sizeOldEmployees ?? 210}
+											/>
 										</div>
 									);
 								})}
@@ -140,7 +152,8 @@ export const EmployeeGrowth = ({step, title, subtitle}: Props) => {
 							const scale = spIn * (1 - spOut);
 							return (
 								<div style={{transform: `scale(${scale})`}}>
-									<TeamMember member={m} size={400} />
+									<TeamMember member={m} size={sizeNewEmployees ?? 400} />
+
 								</div>
 							);
 						})}
