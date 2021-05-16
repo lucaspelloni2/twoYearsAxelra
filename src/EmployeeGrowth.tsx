@@ -3,7 +3,9 @@ import React from 'react';
 import {interpolate, spring, useCurrentFrame, useVideoConfig} from 'remotion';
 import styled from 'styled-components';
 import Calvin from './assets/team/calvin_guetzli.jpg';
+import Daniela from './assets/team/daniela_guetzli.jpg';
 import David from './assets/team/david_guetzli.jpg';
+import Fra from './assets/team/francesca_guetzli.jpg';
 import Ile from './assets/team/ile_guetzli.jpg';
 import Jonas from './assets/team/jonas_guetzli.jpg';
 import Jonny from './assets/team/jonny_guetzli.jpg';
@@ -69,6 +71,20 @@ const david: TeamMemberType = {
 	role: 'Full Stack Developer',
 };
 
+const fra: TeamMemberType = {
+	id: 'manu',
+	src: Fra,
+	name: 'Francesca Monzeglio',
+	role: 'Data Scientist',
+};
+
+const daniela: TeamMemberType = {
+	id: 'fra',
+	src: Daniela,
+	name: 'Daniela Brügger',
+	role: 'Venture Investmetn Coach',
+};
+
 const getTeam = (step: number): TeamMemberType[] => {
 	if (step === 1) {
 		return [...founders, {isNew: true, ...jonny}];
@@ -103,6 +119,21 @@ const getTeam = (step: number): TeamMemberType[] => {
 			...[
 				{isNew: true, ...manuel},
 				{isNew: true, ...david},
+			],
+		];
+	} else if (step === 5) {
+		return [
+			...founders,
+			jonny,
+			calvin,
+			jonas,
+			nico,
+			ile,
+			manuel,
+			david,
+			...[
+				{isNew: true, ...fra},
+				{isNew: true, ...daniela},
 			],
 		];
 	}

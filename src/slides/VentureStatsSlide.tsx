@@ -8,8 +8,10 @@ import {
 	useVideoConfig,
 } from 'remotion';
 import styled from 'styled-components';
-import FQXLogo from '../assets/ventures/fqx/img_3.png';
 import FQXImg from '../assets/ventures/fqx/img_1.png';
+import FQXLogo from '../assets/ventures/fqx/img_3.png';
+import GioiaLogo from '../assets/ventures/gioia/img_4.png';
+import GioiaImg from '../assets/ventures/gioia/img_5.png';
 import LiveLogo from '../assets/ventures/livealytics/img_1.png';
 import LiveImg from '../assets/ventures/livealytics/img_3.png';
 import SibexLogo from '../assets/ventures/sibex/img_1.png';
@@ -110,7 +112,27 @@ const getElements = ({id}: VentureType): VentureStatsType | null => {
 				],
 			};
 		case 'gioia':
-			return null;
+			return {
+				background:
+					'linear-gradient(135deg, #1C5096 0%, #0A63B4 66%, #0D86ED 100%)',
+				stats: [
+					'Start: Mai 2020',
+					'Go-Live: April 2021',
+					'Links: gkb.ch/de/private/vorsorgen-planen/produkte/gioia-3a',
+				],
+				logo: GioiaLogo,
+				image: createImage({
+					src: GioiaImg,
+					width: 850,
+					bottom: -320,
+					left: -810,
+				}),
+				hashtags: [
+					'FinTech',
+					'ThirdPillar',
+					'ResponsibleInvestments',
+				],
+			};
 		case 'freya':
 			return null;
 		default:

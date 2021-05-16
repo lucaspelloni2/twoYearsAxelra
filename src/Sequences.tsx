@@ -3,11 +3,31 @@ import {Img, Sequence} from 'remotion';
 import LiveLogo from '../src/assets/ventures/livealytics/img_5.png';
 import SwypeLogo from '../src/assets/ventures/swype/logo.png';
 import FirstOfficeVideo from './assets/first-office.mp4';
-import SecondOfficeVideo from './assets/second-office.mp4';
 import Inc1 from './assets/inc1.jpeg';
 import Inc3 from './assets/inc3.jpeg';
 import Inc4 from './assets/inc4.jpeg';
 import Inc5 from './assets/inc5.jpeg';
+import SecondOfficeVideo from './assets/second-office.mp4';
+import ThirdOfficeVideo from './assets/third-office.mp4';
+import ThirdOffice1 from './assets/third-office/img.png';
+import ThirdOffice2 from './assets/third-office/img_1.png';
+import ThirdOffice3 from './assets/third-office/img_2.png';
+import ThirdOffice4 from './assets/third-office/img_3.png';
+import ThirdOffice5 from './assets/third-office/img_4.png';
+import ThirdOffice6 from './assets/third-office/img_5.png';
+import ThirdOffice7 from './assets/third-office/img_6.png';
+import FQX1 from './assets/ventures/fqx/images/img.png';
+import FQX2 from './assets/ventures/fqx/images/img_1.png';
+import FQX3 from './assets/ventures/fqx/images/img_2.png';
+import FQX4 from './assets/ventures/fqx/images/img_3.png';
+import FQX5 from './assets/ventures/fqx/images/img_4.png';
+import FQXLogo from './assets/ventures/fqx/images/img_6.png';
+import Gioia1 from './assets/ventures/gioia/images/img.png';
+import Gioia2 from './assets/ventures/gioia/images/img_1.png';
+import Gioia3 from './assets/ventures/gioia/images/img_2.png';
+import Gioia4 from './assets/ventures/gioia/images/img_3.png';
+import Gioia5 from './assets/ventures/gioia/images/img_4.png';
+import GioiaLogo from './assets/ventures/gioia/img_4.png';
 import Live1 from './assets/ventures/livealytics/images/img.png';
 import Live2 from './assets/ventures/livealytics/images/img_1.png';
 import Live3 from './assets/ventures/livealytics/images/img_2.png';
@@ -165,6 +185,151 @@ const liveImages: ImageType[] = [
 		width: 1020,
 		height: 'auto',
 		src: Live5,
+	}),
+];
+
+const fqxImages: ImageType[] = [
+	createImage({
+		left: -32,
+		top: -10,
+		width: 950,
+		zIndex: 5,
+		height: 'auto',
+		src: FQX1,
+	}),
+	createImage({
+		right: 650,
+		top: -10,
+		width: 360,
+		zIndex: 2,
+		height: 'auto',
+		src: FQX2,
+	}),
+	createImage({
+		left: -10,
+		zIndex: 3,
+		bottom: -10,
+		width: 925,
+		height: 'auto',
+		src: FQX3,
+	}),
+	createImage({
+		right: -10,
+		zIndex: 1,
+		top: -10,
+		width: 680,
+		height: 'auto',
+		src: FQX4,
+	}),
+	createImage({
+		right: -10,
+		zIndex: 2,
+		bottom: -44,
+		width: 1020,
+		height: 'auto',
+		src: FQX5,
+	}),
+];
+
+const thirdOffice: ImageType[] = [
+	createImage({
+		left: -32,
+		top: -50,
+		width: 950,
+		zIndex: 5,
+		height: 'auto',
+		src: ThirdOffice1,
+	}),
+	createImage({
+		right: -10,
+		bottom: -10,
+		width: 650,
+		zIndex: 2,
+		height: 'auto',
+		src: ThirdOffice2,
+	}),
+	createImage({
+		left: 910,
+		zIndex: 3,
+		top: -10,
+		width: 450,
+		height: 'auto',
+		src: ThirdOffice3,
+	}),
+	createImage({
+		right: -90,
+		zIndex: 1,
+		top: -10,
+		width: 665,
+		height: 'auto',
+		src: ThirdOffice4,
+	}),
+	createImage({
+		right: -10,
+		zIndex: 3,
+		bottom: 270,
+		width: 650,
+		height: 'auto',
+		src: ThirdOffice5,
+	}),
+	createImage({
+		left: -10,
+		zIndex: 2,
+		bottom: -30,
+		width: 800,
+		height: 'auto',
+		src: ThirdOffice6,
+	}),
+	createImage({
+		right: 332,
+		zIndex: 1,
+		bottom: -10,
+		width: 930,
+		height: 'auto',
+		src: ThirdOffice7,
+	}),
+];
+
+const gioiaImages: ImageType[] = [
+	createImage({
+		left: -32,
+		top: -50,
+		width: 950,
+		zIndex: 5,
+		height: 'auto',
+		src: Gioia1,
+	}),
+	createImage({
+		right: -10,
+		bottom: -25,
+		width: 570,
+		zIndex: 5,
+		height: 'auto',
+		src: Gioia2,
+	}),
+	createImage({
+		left: 910,
+		zIndex: 3,
+		top: -150,
+		width: 450,
+		height: 'auto',
+		src: Gioia3,
+	}),
+	createImage({
+		left: -10,
+		zIndex: 1,
+		bottom: -10,
+		width: 750,
+		height: 'auto',
+		src: Gioia4,
+	}),
+	createImage({
+		right: 533,
+		zIndex: 3,
+		bottom: -10,
+		width: 650,
+		height: 'auto',
+		src: Gioia5,
 	}),
 ];
 
@@ -394,11 +559,81 @@ export const Sequences = () => {
 			</Sequence>
 			<Sequence from={5455} durationInFrames={200} layout="none">
 				<ImagesWithCenteredLogo
-					logo={<Img src={LiveLogo} />}
+					logo={<Img src={FQXLogo} style={{height: 70}} />}
 					backgroundLogo="#ffffff"
 					backgroundScreen="linear-gradient(224deg, #5980F0 0%, #2D49DC 100%)"
 				>
-					<RandomImages images={liveImages} />
+					<RandomImages images={fqxImages} />
+				</ImagesWithCenteredLogo>
+			</Sequence>
+			<Sequence from={5655} durationInFrames={15}>
+				<ColorTransition from="#5980F0" to={__COLORS.AXELRA_DARK_BLUE} />
+			</Sequence>
+			<Sequence from={5670} durationInFrames={200}>
+				<EmployeeGrowth
+					step={5}
+					title="11 + 2 Axelrators"
+					subtitle="New projects new talents."
+					sizeOldEmployees={130}
+					sizeNewEmployees={300}
+				/>
+			</Sequence>
+			<Sequence from={5870} durationInFrames={15}>
+				<ColorTransition from={__COLORS.AXELRA_DARK_BLUE} to="#ffffff" />
+			</Sequence>
+			<Sequence
+				from={5885}
+				durationInFrames={AXELRA_SLIDE_DURATION_IN_FRAMES}
+				layout="none"
+			>
+				<DefaultAxelraSlide
+					titleText="More people  = new home"
+					titleSubText="From co-working to our own office."
+				/>
+			</Sequence>
+			<Sequence from={5975} durationInFrames={390} layout="none">
+				<AxelraSlideWithHeader
+					title="TODO: replace with other format"
+					subtitle="From co-working to our own office."
+					titleColor={__COLORS.WHITE}
+					logoColor={__COLORS.WHITE}
+				>
+					<VideoFirstOffice video={ThirdOfficeVideo} />
+				</AxelraSlideWithHeader>
+			</Sequence>
+			<Sequence from={6365} durationInFrames={200} layout="none">
+				<ImagesWithCenteredLogo
+					logo={<AxelraLogo />}
+					backgroundLogo="#ffffff"
+					backgroundScreen="#ffffff"
+				>
+					<RandomImages images={thirdOffice} />
+				</ImagesWithCenteredLogo>
+			</Sequence>
+
+			<Sequence from={6565} durationInFrames={15}>
+				<ColorTransition from="#ffffff" to="#1C5096" />
+			</Sequence>
+			<Sequence from={6580} durationInFrames={100}>
+				<VentureHeroSlide
+					title="GKB Gioia 3a"
+					subtitle="Macht Vorsorge zur Vorfreude."
+					background="linear-gradient(135deg, #1C5096 0%, #0A63B4 66%, #0D86ED 100%)"
+				/>
+			</Sequence>
+			<Sequence from={6680} durationInFrames={200}>
+				<VentureProductSlide id="gioia" />
+			</Sequence>
+			<Sequence from={6880} durationInFrames={200}>
+				<VentureStatsSlide id="gioia" />
+			</Sequence>
+			<Sequence from={7080} durationInFrames={200} layout="none">
+				<ImagesWithCenteredLogo
+					logo={<Img src={GioiaLogo} style={{height: 130}} />}
+					backgroundLogo="linear-gradient(135deg, #1C5096 0%, #0A63B4 66%, #0D86ED 100%)"
+					backgroundScreen="linear-gradient(135deg, #1C5096 0%, #0A63B4 66%, #0D86ED 100%)"
+				>
+					<RandomImages images={gioiaImages} />
 				</ImagesWithCenteredLogo>
 			</Sequence>
 		</Scaler>

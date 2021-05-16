@@ -3,6 +3,9 @@ import React from 'react';
 import {Img, spring, useCurrentFrame, useVideoConfig} from 'remotion';
 import styled from 'styled-components';
 import FQX1 from '../assets/ventures/fqx/img.png';
+import Gioia1 from '../assets/ventures/gioia/img.png';
+import Gioia2 from '../assets/ventures/gioia/img_1.png';
+import Gioia3 from '../assets/ventures/gioia/img_3.png';
 import Live1 from '../assets/ventures/livealytics/img.png';
 import Sibex1 from '../assets/ventures/sibex/img.png';
 import Swype1 from '../assets/ventures/swype/swype_1.svg';
@@ -83,7 +86,32 @@ const getElements = ({id}: VentureType): ProductSlideProps | null => {
 					'FQX enables the issuance and transfer of electronic negotiable instruments (eNI™) with theenforceability in 164 countries based on a banking-grade DLT environment.',
 			};
 		case 'gioia':
-			return null;
+			return {
+				firstWordColor: '#76BFFB',
+				background:
+					'linear-gradient(135deg, #1C5096 0%, #0A63B4 66%, #0D86ED 100%)',
+				images: [
+					createImage({src: Gioia1, top: 100, left: 0, zIndex: 1, width: 430}),
+					createImage({
+						src: Gioia2,
+						top: 180,
+						left: 260,
+						zIndex: 2,
+						width: 430,
+					}),
+					createImage({
+						src: Gioia3,
+						top: 260,
+						left: 520,
+						zIndex: 3,
+						width: 430,
+					}),
+				],
+				ventureName: 'Gioia 3a',
+				smallTitle: 'with Axelra in 182 Days',
+				description:
+					'In wenigen Minuten ist Ihre Säule 3a komplett auf Ihrem Smartphone eingerichtet und bereit für Ihre individuellen Vorsorgepläne.',
+			};
 		case 'freya':
 			return null;
 		default:

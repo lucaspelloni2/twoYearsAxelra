@@ -16,7 +16,7 @@ const LogoContainer = styled(Flex)<{background: string}>`
 	left: 50%;
 	background: ${(props) => props.background};
 	border-radius: 10px;
-	padding: 10px 50px;
+	padding: 20px 50px;
 	z-index: 10;
 	box-shadow: 0 2px 16px 11px rgba(0, 0, 0, 0.11);
 `;
