@@ -18,6 +18,8 @@ import SibexLogo from '../assets/ventures/sibex/img_1.png';
 import SibexImg from '../assets/ventures/sibex/img_2.png';
 import SwypeImg from '../assets/ventures/swype/card.png';
 import SwypeLogo from '../assets/ventures/swype/logo.png';
+import FreyaLogo from '../assets/ventures/freya/img_1.png'
+import FreyaImg from '../assets/ventures/freya/freya4.png'
 import {createImage, ImageType} from '../ImageType';
 import {__COLORS} from '../theme';
 import {BlackSubTitle, BlackTitle} from '../UI';
@@ -127,14 +129,26 @@ const getElements = ({id}: VentureType): VentureStatsType | null => {
 					bottom: -320,
 					left: -810,
 				}),
-				hashtags: [
-					'FinTech',
-					'ThirdPillar',
-					'ResponsibleInvestments',
-				],
+				hashtags: ['FinTech', 'ThirdPillar', 'ResponsibleInvestments'],
 			};
 		case 'freya':
-			return null;
+			return {
+				background:
+					'linear-gradient(225deg, #FFBB32 0%, #FFA212 100%)',
+				stats: [
+					'Start: Mai 2020',
+					'Go-Live: April 2021',
+					'Links: freya-savings.com',
+				],
+				logo: FreyaLogo,
+				image: createImage({
+					src: FreyaImg,
+					width: 750,
+					bottom: -120,
+					left: -720,
+				}),
+				hashtags: ['FinTech', 'ThirdPillar', 'ResponsibleInvestments'],
+			};
 		default:
 			throw new Error('venture not implemented');
 	}

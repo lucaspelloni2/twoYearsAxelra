@@ -6,6 +6,9 @@ import FQX1 from '../assets/ventures/fqx/img.png';
 import Gioia1 from '../assets/ventures/gioia/img.png';
 import Gioia2 from '../assets/ventures/gioia/img_1.png';
 import Gioia3 from '../assets/ventures/gioia/img_3.png';
+import Freya1 from '../assets/ventures/freya/freya1.png';
+import Freya2 from '../assets/ventures/freya/freya2.png';
+import Freya3 from '../assets/ventures/freya/freya3.png';
 import Live1 from '../assets/ventures/livealytics/img.png';
 import Sibex1 from '../assets/ventures/sibex/img.png';
 import Swype1 from '../assets/ventures/swype/swype_1.svg';
@@ -113,7 +116,31 @@ const getElements = ({id}: VentureType): ProductSlideProps | null => {
 					'In wenigen Minuten ist Ihre Säule 3a komplett auf Ihrem Smartphone eingerichtet und bereit für Ihre individuellen Vorsorgepläne.',
 			};
 		case 'freya':
-			return null;
+			return {
+				firstWordColor: '#2E4565',
+				ventureName: 'Freya 3a',
+				smallTitle: 'with Axelra in 169 Days',
+				images: [
+					createImage({src: Freya1, top: 100, left: 0, zIndex: 1, width: 350}),
+					createImage({
+						src: Freya2,
+						top: 180,
+						left: 260,
+						zIndex: 2,
+						width: 350,
+					}),
+					createImage({
+						src: Freya3,
+						top: 260,
+						left: 520,
+						zIndex: 3,
+						width: 350,
+					}),
+				],
+				background: 'linear-gradient(225deg, #FFBB32 0%, #FFA212 100%)',
+				description:
+					'Freya 3a ist eine mobile App für die private 3a Vorsorge ermöglicht und über das persönliche Sinn Profil die Auswahl in ausschliesslich nachhaltige Anlagen steuert.',
+			};
 		default:
 			throw new Error('venture not implemented');
 	}

@@ -27,6 +27,13 @@ import Gioia2 from './assets/ventures/gioia/images/img_1.png';
 import Gioia3 from './assets/ventures/gioia/images/img_2.png';
 import Gioia4 from './assets/ventures/gioia/images/img_3.png';
 import Gioia5 from './assets/ventures/gioia/images/img_4.png';
+import Freya1 from './assets/ventures/freya/images/img.png';
+import Freya2 from './assets/ventures/freya/images/img_1.png';
+import Freya3 from './assets/ventures/freya/images/img_2.png';
+import Freya4 from './assets/ventures/freya/images/img_3.png';
+import Freya5 from './assets/ventures/freya/images/img_4.png';
+import Freya6 from './assets/ventures/freya/images/img_5.png';
+
 import GioiaLogo from './assets/ventures/gioia/img_4.png';
 import Live1 from './assets/ventures/livealytics/images/img.png';
 import Live2 from './assets/ventures/livealytics/images/img_1.png';
@@ -39,6 +46,7 @@ import Swype3 from './assets/ventures/swype/img_3.png';
 import Swype4 from './assets/ventures/swype/img_4.png';
 import Swype5 from './assets/ventures/swype/img_5.png';
 import Swype6 from './assets/ventures/swype/img_6.png';
+import FreyaLogo from './assets/ventures/freya/img.png'
 import {AxelraLogo} from './AxelraLogo';
 import {ColorTransition} from './ColorTransition';
 import {EmployeeGrowth} from './EmployeeGrowth';
@@ -333,6 +341,50 @@ const gioiaImages: ImageType[] = [
 	}),
 ];
 
+const freyaImages: ImageType[] = [
+	createImage({
+		left: -32,
+		top: -50,
+		width: 950,
+		zIndex: 5,
+		height: 'auto',
+		src: Freya1,
+	}),
+	createImage({
+		right: -10,
+		bottom: -25,
+		width: 650,
+		zIndex: 5,
+		height: 'auto',
+		src: Freya2,
+	}),
+	createImage({
+		left: 850,
+		zIndex: 5,
+		top: -18,
+		width: 450,
+		height: 'auto',
+		src: Freya3,
+	}),
+
+	createImage({
+		right: 533,
+		zIndex: 3,
+		bottom: -10,
+		width: 650,
+		height: 'auto',
+		src: Freya5,
+	}),
+	createImage({
+		right: -130,
+		zIndex: 3,
+		top: -10,
+		width: 870,
+		height: 'auto',
+		src: Freya6,
+	}),
+];
+
 export const Sequences = () => {
 	return (
 		<Scaler scale={2}>
@@ -342,8 +394,8 @@ export const Sequences = () => {
 				layout="none"
 			>
 				<DefaultAxelraSlide
-					titleText="How it started"
-					titleSubText="Our Journey from 05.2019 - 05.2021"
+					titleText="2 Years with Axelra"
+					titleSubText="THANK YOU ALL!"
 				/>
 			</Sequence>
 			<Sequence
@@ -636,6 +688,36 @@ export const Sequences = () => {
 					<RandomImages images={gioiaImages} />
 				</ImagesWithCenteredLogo>
 			</Sequence>
+
+			<Sequence from={7280} durationInFrames={15}>
+				<ColorTransition from="#1C5096" to="#FFBB32" />
+			</Sequence>
+
+
+			<Sequence from={7295} durationInFrames={100}>
+				<VentureHeroSlide
+					title="Freya 3a"
+					subtitle="Gewinn mit Sinn in der Vorsorge verbinden."
+					background="linear-gradient(225deg, #FFBB32 0%, #FFA212 100%)"
+				/>
+			</Sequence>
+			<Sequence from={7395} durationInFrames={200}>
+				<VentureProductSlide id="freya" />
+			</Sequence>
+			<Sequence from={7595} durationInFrames={200}>
+				<VentureStatsSlide id="freya" />
+			</Sequence>
+			<Sequence from={7795} durationInFrames={200} layout="none">
+				<ImagesWithCenteredLogo
+					logo={<Img src={FreyaLogo} style={{height: 130}} />}
+					backgroundLogo="#ffffff"
+					backgroundScreen="linear-gradient(225deg, #FFBB32 0%, #FFA212 100%)"
+				>
+					<RandomImages images={freyaImages} />
+				</ImagesWithCenteredLogo>
+			</Sequence>
+
+
 		</Scaler>
 	);
 };

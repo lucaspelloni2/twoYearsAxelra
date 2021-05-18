@@ -8,7 +8,7 @@ export const RemotionVideo: React.FC = () => {
 			<Composition
 				id="DefaultAxelraSlide"
 				component={Sequences}
-				durationInFrames={7500}
+				durationInFrames={8010}
 				fps={30}
 				width={3840}
 				height={2160}
