@@ -25,7 +25,7 @@ const Divider = styled.div`
 const jonny: TeamMemberType = {
 	id: 'jonny',
 	src: Jonny,
-	name: 'Jonathan Burger',
+	name: 'Jonny Burger',
 	role: 'Full Stack Developer',
 };
 
@@ -158,10 +158,15 @@ export const EmployeeGrowth = ({
 	const frame = useCurrentFrame();
 	const {fps, durationInFrames} = useVideoConfig();
 
-	const height = interpolate(frame, [30, 46], [0, 100], {
-		extrapolateLeft: 'clamp',
-		extrapolateRight: 'clamp',
-	});
+	const height = interpolate(
+		frame,
+		[30, 46, durationInFrames - 15, durationInFrames - 5],
+		[0, 100, 100, 0],
+		{
+			extrapolateLeft: 'clamp',
+			extrapolateRight: 'clamp',
+		}
+	);
 
 	return (
 		<AxelraSlideWithHeader

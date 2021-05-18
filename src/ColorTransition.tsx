@@ -1,23 +1,58 @@
-import React from 'react';
+import React, {useMemo} from 'react';
 import {
 	AbsoluteFill,
+	interpolate,
 	interpolateColors,
 	useCurrentFrame,
 	useVideoConfig,
 } from 'remotion';
-import styled from 'styled-components';
 
-const Container = styled(AbsoluteFill)<{color: string}>`
-	background-color: ${(props) => props.color};
-`;
+type Props =
+	| {
+			type: 'color';
+			from: string;
+			to: string;
+	  }
+	| {
+			type: 'linear-gradient';
+			from: [string, string];
+			to: [string, string];
+			angle: [number, number];
+	  };
 
-type Props = {
-	from: string;
-	to: string;
-};
-export const ColorTransition = ({from, to}: Props) => {
+export const ColorTransition = (props: Props) => {
 	const frame = useCurrentFrame();
 	const {durationInFrames} = useVideoConfig();
-	const color = interpolateColors(frame, [0, durationInFrames - 1], [from, to]);
-	return <Container color={color} />;
+
+	const style: React.CSSProperties = useMemo(() => {
+		if (props.type === 'color') {
+			return {
+				backgroundColor: interpolateColors(
+					frame,
+					[0, durationInFrames - 1],
+					[props.from, props.to]
+				),
+			};
+		}
+		if (props.type === 'linear-gradient') {
+			return {
+				background: `linear-gradient(${interpolate(
+					frame,
+					[0, durationInFrames - 1],
+					props.angle
+				)}deg, ${interpolateColors(
+					frame,
+					[0, durationInFrames - 1],
+					[props.from[0], props.to[0]]
+				)}, ${interpolateColors(
+					frame,
+					[0, durationInFrames - 1],
+					[props.from[1], props.to[1]]
+				)})`,
+			};
+		}
+		throw new Error('this guil');
+	}, [durationInFrames, frame, props]);
+
+	return <AbsoluteFill style={style} />;
 };

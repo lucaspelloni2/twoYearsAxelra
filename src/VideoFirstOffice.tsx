@@ -2,8 +2,8 @@ import {Flex} from 'axelra-styled-bootstrap-grid';
 import React from 'react';
 import {interpolate, useCurrentFrame, useVideoConfig, Video} from 'remotion';
 import styled from 'styled-components';
-
 import {__COLORS} from './theme';
+
 const Container = styled(Flex)``;
 
 type Props = {video: any};
@@ -21,7 +21,7 @@ export const VideoFirstOffice = ({video}: Props) => {
 			justify="center"
 			align="center"
 			flex={1}
-			style={{backgroundColor: __COLORS.AXELRA_DARK_BLUE}}
+			style={{backgroundColor: __COLORS.WHITE}}
 		>
 			<Video src={video} width={width / 2} style={{opacity}} />
 		</Container>

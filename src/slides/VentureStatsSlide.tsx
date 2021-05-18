@@ -10,6 +10,8 @@ import {
 import styled from 'styled-components';
 import FQXImg from '../assets/ventures/fqx/img_1.png';
 import FQXLogo from '../assets/ventures/fqx/img_3.png';
+import FreyaImg from '../assets/ventures/freya/freya4.png';
+import FreyaLogo from '../assets/ventures/freya/img_1.png';
 import GioiaLogo from '../assets/ventures/gioia/img_4.png';
 import GioiaImg from '../assets/ventures/gioia/img_5.png';
 import LiveLogo from '../assets/ventures/livealytics/img_1.png';
@@ -18,8 +20,6 @@ import SibexLogo from '../assets/ventures/sibex/img_1.png';
 import SibexImg from '../assets/ventures/sibex/img_2.png';
 import SwypeImg from '../assets/ventures/swype/card.png';
 import SwypeLogo from '../assets/ventures/swype/logo.png';
-import FreyaLogo from '../assets/ventures/freya/img_1.png'
-import FreyaImg from '../assets/ventures/freya/freya4.png'
 import {createImage, ImageType} from '../ImageType';
 import {__COLORS} from '../theme';
 import {BlackSubTitle, BlackTitle} from '../UI';
@@ -34,15 +34,6 @@ type VentureStatsType = {
 	background: string;
 	topFinTech?: string;
 };
-
-const TopFintechContainer = styled.div`
-	width: 200px;
-	height: 200px;
-	background: red;
-	position: absolute;
-	right: 250px;
-	bottom: 150px;
-`;
 
 const Verified = () => {
 	return (
@@ -133,8 +124,7 @@ const getElements = ({id}: VentureType): VentureStatsType | null => {
 			};
 		case 'freya':
 			return {
-				background:
-					'linear-gradient(225deg, #FFBB32 0%, #FFA212 100%)',
+				background: 'linear-gradient(225deg, #FFBB32 0%, #FFA212 100%)',
 				stats: [
 					'Start: Mai 2020',
 					'Go-Live: April 2021',
@@ -260,7 +250,6 @@ export const VentureStatsSlide = ({id}: VentureType) => {
 		config: {
 			damping: 20,
 			stiffness: 200,
-			mass: 2,
 		},
 	});
 

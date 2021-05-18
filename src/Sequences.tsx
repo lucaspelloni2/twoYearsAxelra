@@ -22,18 +22,17 @@ import FQX3 from './assets/ventures/fqx/images/img_2.png';
 import FQX4 from './assets/ventures/fqx/images/img_3.png';
 import FQX5 from './assets/ventures/fqx/images/img_4.png';
 import FQXLogo from './assets/ventures/fqx/images/img_6.png';
+import Freya1 from './assets/ventures/freya/images/img.png';
+import Freya2 from './assets/ventures/freya/images/img_1.png';
+import Freya3 from './assets/ventures/freya/images/img_2.png';
+import Freya5 from './assets/ventures/freya/images/img_4.png';
+import Freya6 from './assets/ventures/freya/images/img_5.png';
+import FreyaLogo from './assets/ventures/freya/img.png';
 import Gioia1 from './assets/ventures/gioia/images/img.png';
 import Gioia2 from './assets/ventures/gioia/images/img_1.png';
 import Gioia3 from './assets/ventures/gioia/images/img_2.png';
 import Gioia4 from './assets/ventures/gioia/images/img_3.png';
 import Gioia5 from './assets/ventures/gioia/images/img_4.png';
-import Freya1 from './assets/ventures/freya/images/img.png';
-import Freya2 from './assets/ventures/freya/images/img_1.png';
-import Freya3 from './assets/ventures/freya/images/img_2.png';
-import Freya4 from './assets/ventures/freya/images/img_3.png';
-import Freya5 from './assets/ventures/freya/images/img_4.png';
-import Freya6 from './assets/ventures/freya/images/img_5.png';
-
 import GioiaLogo from './assets/ventures/gioia/img_4.png';
 import Live1 from './assets/ventures/livealytics/images/img.png';
 import Live2 from './assets/ventures/livealytics/images/img_1.png';
@@ -46,7 +45,6 @@ import Swype3 from './assets/ventures/swype/img_3.png';
 import Swype4 from './assets/ventures/swype/img_4.png';
 import Swype5 from './assets/ventures/swype/img_5.png';
 import Swype6 from './assets/ventures/swype/img_6.png';
-import FreyaLogo from './assets/ventures/freya/img.png'
 import {AxelraLogo} from './AxelraLogo';
 import {ColorTransition} from './ColorTransition';
 import {EmployeeGrowth} from './EmployeeGrowth';
@@ -435,7 +433,11 @@ export const Sequences = () => {
 				</ImagesWithCenteredLogo>
 			</Sequence>
 			<Sequence from={670} durationInFrames={5}>
-				<ColorTransition from={__COLORS.WHITE} to={__COLORS.AXELRA_DARK_BLUE} />
+				<ColorTransition
+					type="color"
+					from={__COLORS.WHITE}
+					to={__COLORS.AXELRA_DARK_BLUE}
+				/>
 			</Sequence>
 			<Sequence from={675} durationInFrames={200} layout="none">
 				<AxelraSlideWithHeader
@@ -449,7 +451,11 @@ export const Sequences = () => {
 				</AxelraSlideWithHeader>
 			</Sequence>
 			<Sequence from={875} durationInFrames={5}>
-				<ColorTransition from={__COLORS.AXELRA_DARK_BLUE} to={__COLORS.WHITE} />
+				<ColorTransition
+					type="color"
+					from={__COLORS.AXELRA_DARK_BLUE}
+					to={__COLORS.WHITE}
+				/>
 			</Sequence>
 			<Sequence
 				from={880}
@@ -479,7 +485,11 @@ export const Sequences = () => {
 				/>
 			</Sequence>
 			<Sequence from={1660} durationInFrames={15}>
-				<ColorTransition from={__COLORS.AXELRA_DARK_BLUE} to="#FF0070" />
+				<ColorTransition
+					type="color"
+					from={__COLORS.AXELRA_DARK_BLUE}
+					to="#FF0070"
+				/>
 			</Sequence>
 			<Sequence from={1675} durationInFrames={100}>
 				<VentureHeroSlide
@@ -489,7 +499,7 @@ export const Sequences = () => {
 				/>
 			</Sequence>
 			<Sequence from={1775} durationInFrames={15}>
-				<ColorTransition from="#FF0070" to="#464D5B" />
+				<ColorTransition type="color" from="#FF0070" to="#464D5B" />
 			</Sequence>
 			<Sequence from={1790} durationInFrames={200}>
 				<VentureProductSlide id="moflix" />
@@ -507,7 +517,12 @@ export const Sequences = () => {
 				</ImagesWithCenteredLogo>
 			</Sequence>
 			<Sequence from={2390} durationInFrames={15}>
-				<ColorTransition from="#464D5B" to="#187430" />
+				<ColorTransition
+					type="linear-gradient"
+					from={['#464D5B', '#2A2F3B']}
+					to={['#2DD82F', '#041332']}
+					angle={[180, 224]}
+				/>
 			</Sequence>
 			<Sequence from={2405} durationInFrames={100}>
 				<VentureHeroSlide
@@ -532,7 +547,12 @@ export const Sequences = () => {
 				/>
 			</Sequence>
 			<Sequence from={3205} durationInFrames={15}>
-				<ColorTransition from={__COLORS.AXELRA_DARK_BLUE} to="#1FB985" />
+				<ColorTransition
+					type="linear-gradient"
+					from={[__COLORS.AXELRA_DARK_BLUE, __COLORS.AXELRA_DARK_BLUE]}
+					to={['#1FB985', '#1AE09E']}
+					angle={[0, 79]}
+				/>
 			</Sequence>
 			<Sequence from={3220} durationInFrames={100}>
 				<VentureHeroSlide
@@ -557,7 +577,11 @@ export const Sequences = () => {
 				</ImagesWithCenteredLogo>
 			</Sequence>
 			<Sequence from={3920} durationInFrames={15}>
-				<ColorTransition from="#1FB985" to={__COLORS.AXELRA_DARK_BLUE} />
+				<ColorTransition
+					type="color"
+					from="#1FB985"
+					to={__COLORS.AXELRA_DARK_BLUE}
+				/>
 			</Sequence>
 			<Sequence from={3935} durationInFrames={200}>
 				<EmployeeGrowth
@@ -569,7 +593,11 @@ export const Sequences = () => {
 				/>
 			</Sequence>
 			<Sequence from={4135} durationInFrames={15}>
-				<ColorTransition from={__COLORS.AXELRA_DARK_BLUE} to="#ffffff" />
+				<ColorTransition
+					type="color"
+					from={__COLORS.AXELRA_DARK_BLUE}
+					to="#ffffff"
+				/>
 			</Sequence>
 			<Sequence from={4150} durationInFrames={200} layout="none">
 				<DefaultAxelraSlide titleText="Growth" titleSubText="Office Upgrade" />
@@ -580,6 +608,7 @@ export const Sequences = () => {
 					subtitle="Office Upgrade."
 					titleColor={__COLORS.WHITE}
 					logoColor={__COLORS.WHITE}
+					backgroundColor={__COLORS.WHITE}
 				>
 					<VideoFirstOffice video={SecondOfficeVideo} />
 				</AxelraSlideWithHeader>
@@ -594,7 +623,12 @@ export const Sequences = () => {
 				/>
 			</Sequence>
 			<Sequence from={4940} durationInFrames={15}>
-				<ColorTransition from={__COLORS.AXELRA_DARK_BLUE} to="#5980F0" />
+				<ColorTransition
+					type="linear-gradient"
+					from={[__COLORS.AXELRA_DARK_BLUE, __COLORS.AXELRA_DARK_BLUE]}
+					to={['#5980F0', '#2D49DC']}
+					angle={[0, 224]}
+				/>
 			</Sequence>
 			<Sequence from={4955} durationInFrames={100}>
 				<VentureHeroSlide
@@ -619,7 +653,11 @@ export const Sequences = () => {
 				</ImagesWithCenteredLogo>
 			</Sequence>
 			<Sequence from={5655} durationInFrames={15}>
-				<ColorTransition from="#5980F0" to={__COLORS.AXELRA_DARK_BLUE} />
+				<ColorTransition
+					type="color"
+					from="#5980F0"
+					to={__COLORS.AXELRA_DARK_BLUE}
+				/>
 			</Sequence>
 			<Sequence from={5670} durationInFrames={200}>
 				<EmployeeGrowth
@@ -631,7 +669,11 @@ export const Sequences = () => {
 				/>
 			</Sequence>
 			<Sequence from={5870} durationInFrames={15}>
-				<ColorTransition from={__COLORS.AXELRA_DARK_BLUE} to="#ffffff" />
+				<ColorTransition
+					type="color"
+					from={__COLORS.AXELRA_DARK_BLUE}
+					to="#ffffff"
+				/>
 			</Sequence>
 			<Sequence
 				from={5885}
@@ -664,7 +706,7 @@ export const Sequences = () => {
 			</Sequence>
 
 			<Sequence from={6565} durationInFrames={15}>
-				<ColorTransition from="#ffffff" to="#1C5096" />
+				<ColorTransition type="color" from="#ffffff" to="#1C5096" />
 			</Sequence>
 			<Sequence from={6580} durationInFrames={100}>
 				<VentureHeroSlide
@@ -690,9 +732,8 @@ export const Sequences = () => {
 			</Sequence>
 
 			<Sequence from={7280} durationInFrames={15}>
-				<ColorTransition from="#1C5096" to="#FFBB32" />
+				<ColorTransition type="color" from="#1C5096" to="#FFBB32" />
 			</Sequence>
-
 
 			<Sequence from={7295} durationInFrames={100}>
 				<VentureHeroSlide
@@ -716,8 +757,6 @@ export const Sequences = () => {
 					<RandomImages images={freyaImages} />
 				</ImagesWithCenteredLogo>
 			</Sequence>
-
-
 		</Scaler>
 	);
 };
