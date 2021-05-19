@@ -3,12 +3,12 @@ import React from 'react';
 import {Img, spring, useCurrentFrame, useVideoConfig} from 'remotion';
 import styled from 'styled-components';
 import FQX1 from '../assets/ventures/fqx/img.png';
-import Gioia1 from '../assets/ventures/gioia/img.png';
-import Gioia2 from '../assets/ventures/gioia/img_1.png';
-import Gioia3 from '../assets/ventures/gioia/img_3.png';
 import Freya1 from '../assets/ventures/freya/freya1.png';
 import Freya2 from '../assets/ventures/freya/freya2.png';
 import Freya3 from '../assets/ventures/freya/freya3.png';
+import Gioia1 from '../assets/ventures/gioia/img.png';
+import Gioia2 from '../assets/ventures/gioia/img_1.png';
+import Gioia3 from '../assets/ventures/gioia/img_3.png';
 import Live1 from '../assets/ventures/livealytics/img.png';
 import Sibex1 from '../assets/ventures/sibex/img.png';
 import Swype1 from '../assets/ventures/swype/swype_1.svg';
@@ -86,7 +86,7 @@ const getElements = ({id}: VentureType): ProductSlideProps | null => {
 				ventureName: 'FQX',
 				smallTitle: 'with Axelra in 112 Days',
 				description:
-					'FQX enables the issuance and transfer of electronic negotiable instruments (eNI™) with theenforceability in 164 countries based on a banking-grade DLT environment.',
+					'FQX enables the issuance and transfer of electronic negotiable instruments (eNI™) with enforceability in 164 countries based on a banking-grade DLT environment.',
 			};
 		case 'gioia':
 			return {
@@ -160,7 +160,7 @@ export const VentureProductSlide = ({id}: VentureType) => {
 	const text = description.split(' ').map((t) => ` ${t} `);
 	const springOpacityIn = spring({
 		fps: videoConfig.fps,
-		frame: frame - 40,
+		frame,
 		config: {
 			damping: 100,
 			stiffness: 200,

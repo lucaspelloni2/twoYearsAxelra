@@ -41,6 +41,15 @@ export const VentureHeroSlide = ({title, subtitle, background}: Props) => {
 			extrapolateRight: 'clamp',
 		}
 	);
+	const opacity = interpolate(
+		frame,
+		[0, 8, durationInFrames - 5, durationInFrames],
+		[0, 1, 1, 0],
+		{
+			extrapolateLeft: 'clamp',
+			extrapolateRight: 'clamp',
+		}
+	);
 
 	return (
 		<Container
@@ -51,9 +60,11 @@ export const VentureHeroSlide = ({title, subtitle, background}: Props) => {
 			background={background}
 		>
 			<TextWrapper column justify="center" align="center">
-				<Title style={{filter: `blur(${blur}px)`}}>{title}</Title>
+				<Title style={{filter: `blur(${blur}px)`, opacity}}>{title}</Title>
 				<Spacer x1 />
-				<Subtitle style={{filter: `blur(${blur}px)`}}>{subtitle}</Subtitle>
+				<Subtitle style={{filter: `blur(${blur}px)`, opacity}}>
+					{subtitle}
+				</Subtitle>
 			</TextWrapper>
 		</Container>
 	);

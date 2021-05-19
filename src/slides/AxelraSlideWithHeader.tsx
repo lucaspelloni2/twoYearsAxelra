@@ -52,12 +52,10 @@ export const AxelraSlideWithHeader = ({
 		videoConfig.durationInFrames - 10,
 		videoConfig.durationInFrames,
 	];
-	const opacity = interpolate(frame, input, [0, 1, 1, 0], {
-		extrapolateLeft: 'clamp',
-		extrapolateRight: 'clamp',
-	});
+	const opacity = interpolate(frame, input, [0, 1, 1, 0], {});
 	return (
 		<Container column backgroundColor={backgroundColor}>
+			{children}
 			<Header row align="center" style={{opacity}}>
 				<Flex column>
 					<Title color={titleColor}>{title}</Title>
@@ -68,7 +66,6 @@ export const AxelraSlideWithHeader = ({
 					<AxelraLogo width="170" color={logoColor ?? undefined} />
 				</Flex>
 			</Header>
-			{children}
 		</Container>
 	);
 };

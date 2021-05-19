@@ -37,6 +37,11 @@ const logos = [
 	{id: 'logo5', src: Logo5},
 ];
 
+const Row = styled(Flex)`
+	padding-left: 100px;
+	padding-right: 100px;
+`;
+
 export const Logos = () => {
 	const frame = useCurrentFrame();
 	const {fps, durationInFrames} = useVideoConfig();
@@ -55,15 +60,13 @@ export const Logos = () => {
 
 	return (
 		<Container column justify="center">
-			<Flex row justify="space-between">
+			<Row row justify="space-between">
 				{logos.map((logo, i) => {
 					const spIn = spring({
 						fps,
 						frame: frame - i * 8 - 20,
 						config: {
-							damping: 100,
-							stiffness: 150,
-							mass: 0.3,
+							damping: 200,
 						},
 					});
 					const spOut = spring({
@@ -75,7 +78,7 @@ export const Logos = () => {
 							mass: 0.3,
 						},
 					});
-					const scale = spIn * (1 - spOut);
+					const scale = interpolate(spIn * (1 - spOut), [0, 1], [0, 0.9]);
 					return (
 						<Img
 							key={logo.id}
@@ -86,7 +89,7 @@ export const Logos = () => {
 						/>
 					);
 				})}
-			</Flex>
+			</Row>
 			<LogoContainer
 				column
 				justify="center"
